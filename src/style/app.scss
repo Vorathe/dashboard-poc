@@ -1,0 +1,20 @@
+// styles in src/style directory are applied to the whole page
+body {
+    background: #ccc;
+    color: #fff;
+}
+a {
+    color: #03A9F4;
+}
+
+.content-full {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1600px;
+}
+
+.content-grid {
+  margin: 0 auto;
+  padding: 0 2%;
+  max-width: 1600px;
+}
