@@ -11,32 +11,36 @@
 </div>
 <div class="content-full">
   <div class="grid">
-    <div *ngFor="let card of data" [ngClass]="{'grid__col-md-4': view === 'card', 'grid__col-sm-12' : view === 'list'}">
-      <div class="card" [ngClass]="{'card--list': view === 'list'}">
-        <div class="card__header" [ngClass]="{'grid__col-xs-4': view === 'list'}">
-          <div class="header__group">
-            <div class="header__customer" [ngClass]="{'grid__col-xs-6 grid__col--bleed': view === 'list'}">{{card.customerName}}</div>
-            <div class="header__deal" [ngClass]="{'grid__col-xs-6 grid__col--bleed': view === 'list'}">{{card.dealId}}</div>
+      <div *ngFor="let card of data; let i = index;" [ngClass]="{'grid__col-md-4': view === 'card', 'grid__col-sm-12' : view === 'list'}">
+
+        <div class="card" [ngClass]="{'card--list': view === 'list'}" #cardHost [attr.entryRow]="i % 3 === 0 ? true : false" (click)="createElement(i)">
+          <div class="card__header" [ngClass]="{'grid__col-xs-4': view === 'list'}">
+            <div class="header__group">
+              <div class="header__customer" [ngClass]="{'grid__col-xs-6 grid__col--bleed': view === 'list'}">{{card.customerName}}</div>
+              <div class="header__deal" [ngClass]="{'grid__col-xs-6 grid__col--bleed': view === 'list'}">{{card.dealId}}</div>
+            </div>
+            <button [hidden]="view === 'list'" [ngClass]="{pinned: card.pinned}" (click)="card.pinned = !card.pinned"><i class="material-icons">{{(card.pinned ? 'bookmark' : 'bookmark_border')}}</i></button>
           </div>
-          <button [hidden]="view === 'list'" [ngClass]="{pinned: card.pinned}" (click)="card.pinned = !card.pinned"><i class="material-icons">{{(card.pinned ? 'bookmark' : 'bookmark_border')}}</i></button>
-        </div>
-        <div class="card__content" [ngClass]="{'grid__col-xs-4': view === 'list'}">
-          <div class="content__group">
-            <div class="content__step" [hidden]="view === 'card'" [ngClass]="{'grid__col-xs-6 grid__col--bleed': view === 'list'}">{{card.step}}</div>
-            <div class="content__app" [ngClass]="{'grid__col-xs-6 grid__col--bleed': view === 'list'}">{{card.appStatus}}</div>
-            <div class="content__card" [hidden]="view === 'list'">
-              <div><small>{{card.businessType}}</small></div>
-              <div><small><strong>{{card.loanAmount}}</strong></small></div>
+          <div class="card__content" [ngClass]="{'grid__col-xs-4': view === 'list'}">
+            <div class="content__group">
+              <div class="content__step" [hidden]="view === 'card'" [ngClass]="{'grid__col-xs-6 grid__col--bleed': view === 'list'}">{{card.step}}</div>
+              <div class="content__app" [ngClass]="{'grid__col-xs-6 grid__col--bleed': view === 'list'}">{{card.appStatus}}</div>
+              <div class="content__card" [hidden]="view === 'list'">
+                <div><small>{{card.businessType}}</small></div>
+                <div><small><strong>{{card.loanAmount}}</strong></small></div>
+              </div>
             </div>
           </div>
+          <div class="card__footer" [ngClass]="{'grid__col-xs-4': view === 'list'}">
+            <div [hidden]="view === 'list'">Date: {{card.date}}</div>
+            <button [hidden]="view !== 'list'" [ngClass]="{pinned: card.pinned}" (click)="card.pinned = !card.pinned"><i class="material-icons">{{(card.pinned ? 'bookmark' : 'bookmark_border')}}</i></button>
+          </div>
         </div>
-        <div class="card__footer" [ngClass]="{'grid__col-xs-4': view === 'list'}">
-          <div [hidden]="view === 'list'">Date: {{card.date}}</div>
-          <button [hidden]="view !== 'list'" [ngClass]="{pinned: card.pinned}" (click)="card.pinned = !card.pinned"><i class="material-icons">{{(card.pinned ? 'bookmark' : 'bookmark_border')}}</i></button>
+
+        <div class="card__summary">
+          {{i}}
+          {{(i % 3 === 0)}}
         </div>
       </div>
     </div>
-  </div>
 </div>
-
-
