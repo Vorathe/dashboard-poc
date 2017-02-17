@@ -8,39 +8,56 @@
       <button [ngClass]="{active: view === 'list'}" (click)="view = 'list'">List</button>
     </div>
   </div>
+  <div class="grid">
+    <div class="grid__col-md-4">
+      <select>
+        <option *ngFor="let state of states" [attr.value]="state">
+          {{state}}
+        </option>
+      </select>
+    </div>
+    <div class="grid__col-md-8">
+      Environment: {{env}}
+    </div>
+  </div>
 </div>
 <div class="content-full">
   <div class="grid">
-      <div *ngFor="let card of data; let i = index;" [ngClass]="{'grid__col-md-4': view === 'card', 'grid__col-sm-12' : view === 'list'}">
-
-        <div class="card" [ngClass]="{'card--list': view === 'list'}" #cardHost [attr.entryRow]="i % 3 === 0 ? true : false" (click)="createElement(i)">
-          <div class="card__header" [ngClass]="{'grid__col-xs-4': view === 'list'}">
+    <ng-container *ngFor="let card of data; let i = index; let l = last">
+      <div class="grid__col-md-4">
+        <div class="card" (click)="getSummary(i)">
+          <div class="card__header">
             <div class="header__group">
-              <div class="header__customer" [ngClass]="{'grid__col-xs-6 grid__col--bleed': view === 'list'}">{{card.customerName}}</div>
-              <div class="header__deal" [ngClass]="{'grid__col-xs-6 grid__col--bleed': view === 'list'}">{{card.dealId}}</div>
+              <div class="header__customer">{{card.customerName}}</div>
+              <div class="header__deal">{{card.dealId}}</div>
             </div>
-            <button [hidden]="view === 'list'" [ngClass]="{pinned: card.pinned}" (click)="card.pinned = !card.pinned"><i class="material-icons">{{(card.pinned ? 'bookmark' : 'bookmark_border')}}</i></button>
+            <button [ngClass]="{pinned: card.pinned}" (click)="card.pinned = !card.pinned"><i class="material-icons">{{(card.pinned ? 'bookmark' : 'bookmark_border')}}</i></button>
           </div>
-          <div class="card__content" [ngClass]="{'grid__col-xs-4': view === 'list'}">
+          <div class="card__content">
             <div class="content__group">
-              <div class="content__step" [hidden]="view === 'card'" [ngClass]="{'grid__col-xs-6 grid__col--bleed': view === 'list'}">{{card.step}}</div>
-              <div class="content__app" [ngClass]="{'grid__col-xs-6 grid__col--bleed': view === 'list'}">{{card.appStatus}}</div>
-              <div class="content__card" [hidden]="view === 'list'">
+              <div class="content__app">{{card.appStatus}}</div>
+              <div class="content__card">
                 <div><small>{{card.businessType}}</small></div>
                 <div><small><strong>{{card.loanAmount}}</strong></small></div>
               </div>
             </div>
           </div>
-          <div class="card__footer" [ngClass]="{'grid__col-xs-4': view === 'list'}">
-            <div [hidden]="view === 'list'">Date: {{card.date}}</div>
-            <button [hidden]="view !== 'list'" [ngClass]="{pinned: card.pinned}" (click)="card.pinned = !card.pinned"><i class="material-icons">{{(card.pinned ? 'bookmark' : 'bookmark_border')}}</i></button>
+          <div class="card__footer">
+            <div>Date: {{card.date}}</div>
           </div>
         </div>
-
-        <div class="card__summary">
-          {{i}}
-          {{(i % 3 === 0)}}
+      </div>
+      <div [@slide] *ngIf="(i % 3 === 2 || i % 3 !== 2 && l) && (activeSummaryIndex === i && summaryActive)" class="grid__col-md-12">
+        <div class="card__summary" [ngClass]="{left: leftArrow, middle: midArrow, right: rightArrow}">
+          {{summaryData.customerName}}
+          <br />
+          Active Summary Index: {{activeSummaryIndex}}
+          <br />
+          Card Index: {{summaryData.cardIndex}}
+          <br />
+          <button (click)="summaryActive = false" style="margin-top: 8px;">Close</button>
         </div>
       </div>
-    </div>
+    </ng-container>
+  </div>
 </div>
