@@ -1,6 +1,6 @@
 import { Component, style, keyframes, animate, transition, trigger } from '@angular/core';
 import * as moment from 'moment';
-import * as sillyname from 'sillyname';
+let sillyname = require('sillyname');
 
 @Component({
   selector: 'my-home',
@@ -253,7 +253,6 @@ export class HomeComponent {
   ];
 
   summaryData = {};
-  summaryRowIndexes = [];
   activeSummaryIndex = 0;
   summaryActive = false;
   leftArrow = false;

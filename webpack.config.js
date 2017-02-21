@@ -8,6 +8,7 @@ var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var StyleLintPlugin = require('stylelint-webpack-plugin');
 
 /**
  * Env
@@ -68,7 +69,7 @@ module.exports = function makeWebpackConfig() {
    */
   config.resolve = {
     // only discover files that have those extensions
-    extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html'],
+    extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html']
   };
 
   var atlOptions = '';
@@ -165,11 +166,20 @@ module.exports = function makeWebpackConfig() {
     }),
 
     // Workaround needed for angular 2 angular/angular#11580
-      new webpack.ContextReplacementPlugin(
-        // The (\\|\/) piece accounts for path separators in *nix and Windows
-        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-        root('./src') // location of your src
-      ),
+    new webpack.ContextReplacementPlugin(
+      // The (\\|\/) piece accounts for path separators in *nix and Windows
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      root('./src') // location of your src
+    ),
+
+    new StyleLintPlugin({
+      configFile: '.stylelintrc',
+      context: 'src',
+      files: '**/*.scss',
+      failOnError: false,
+      quiet: false,
+      syntax: 'scss'
+    }),
 
     // Tslint configuration for webpack 2
     new webpack.LoaderOptionsPlugin({

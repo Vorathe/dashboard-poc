@@ -5,21 +5,26 @@
 
 .content-head {
   display: flex;
+
   h1 {
     flex-grow: 1;
   }
+
   .button-group {
     align-self: center;
   }
+
   .button-group > button {
     background-color: #fff;
     border: 1px solid #333;
     padding: 4px 8px;
     float: left;
+
     &:first-child {
       border-right: 0;
     }
   }
+
   button.active {
     color: blue;
   }
@@ -28,37 +33,44 @@
 .card {
   background-color: #fff;
   border: 1px solid #333;
+
   &.card--list {
     display: flex;
   }
 }
 
-
 .card__header {
   display: flex;
   background-color: #aeaeae;
   padding: 8px;
+
   > .header__group {
     flex-grow: 1;
   }
+
   > .header__group > .header__customer {
     font-size: 1.325em;
   }
+
   > .header__group > .header__deal {
     font-size: 80%;
-    &:before {
+
+    &::before {
       content: 'Deal ID# ';
     }
   }
+
   > button {
     background-color: #fff;
     border: 1px solid #333;
     padding: 2px;
     border-radius: 2px;
+
     &.pinned {
       color: blue;
     }
   }
+
   > button > i {
     vertical-align: middle;
   }
@@ -76,17 +88,20 @@
 .card--list > .card__header > .header__group > .header__customer {
   font-size: 1em;
   flex-grow: 1;
-  &:before {
+
+  &::before {
     font-weight: bold;
     content: 'Customer';
     display: block;
     margin-bottom: 2px;
   }
 }
+
 .card--list > .card__header > .header__group > .header__deal {
   font-size: 1em;
   flex-grow: 1;
-  &:before {
+
+  &::before {
     font-weight: bold;
     display: block;
     margin-bottom: 2px;
@@ -95,9 +110,11 @@
 
 .card__content {
   padding: 8px;
+
   > .content__group > .content__app {
     font-weight: bold;
-    &:before {
+
+    &::before {
       content: 'Application: ';
       font-weight: normal;
     }
@@ -107,14 +124,17 @@
 .card--list > .card__content > .content__group > .content__app {
   font-weight: normal;
   flex-grow: 1;
-  &:before {
+
+  &::before {
     content: 'Application';
     display: block;
     font-weight: bold;
   }
 }
 
-.card--list > .card__content, .card--list > .card__footer, .card--list > .card__header {
+.card--list > .card__content,
+.card--list > .card__footer,
+.card--list > .card__header {
   display: flex;
 }
 
@@ -126,17 +146,18 @@
 .content__step {
   font-weight: normal;
   flex-grow: 1;
-  &:before {
+
+  &::before {
     content: 'Step';
     display: block;
     font-weight: bold;
   }
 }
 
-
 .card__footer {
   padding: 8px;
   border-top: 1px dashed #333;
+
   button {
     background-color: #fff;
     border: 1px solid #333;
@@ -144,6 +165,7 @@
     vertical-align: middle;
     align-self: flex-end;
     margin: auto 0;
+
     > i {
       vertical-align: middle;
     }
@@ -159,7 +181,9 @@
   border: 1px solid #333;
   padding: 8px;
   position: relative;
-  &:after, &:before {
+
+  &::after,
+  &::before {
     bottom: 100%;
     left: 50%;
     border: solid transparent;
@@ -170,27 +194,36 @@
     pointer-events: none;
     transition: left 180ms ease-in-out;
   }
-  &:after {
+
+  &::after {
     border-color: rgba(255, 255, 255, 0);
-    border-bottom-color: #ffffff;
+    border-bottom-color: #fff;
     border-width: 16px;
     margin-left: -16px;
   }
-  &:before {
+
+  &::before {
     border-color: rgba(51, 51, 51, 0);
     border-bottom-color: #333;
     border-width: 17px;
     margin-left: -17px;
   }
-  &.left:after, &.left:before {
+
+  &.left::after,
+  &.left::before {
     left: 15%;
   }
-  &.middle:after, &.middle:before {
+
+  &.middle::after,
+  &.middle::before {
     left: 50%;
   }
-  &.right:after, &.right:before {
+
+  &.right::after,
+  &.right::before {
     left: 85%;
   }
+
   button {
     background-color: #fff;
     border: 1px solid #333;
