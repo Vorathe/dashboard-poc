@@ -42,26 +42,28 @@ module.exports = function makeWebpackConfig() {
     config.devtool = 'eval-source-map';
   }
 
-  /**
-   * Entry
-   * Reference: http://webpack.github.io/docs/configuration.html#entry
-   */
-  config.entry = isTest ? {} : {
-    'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts',
-    'app': './src/main.ts' // our angular app
-  };
+  if (!isTest) {
+    /**
+     * Entry
+     * Reference: http://webpack.github.io/docs/configuration.html#entry
+     */
+    config.entry = isTest ? {} : {
+        'polyfills': './src/polyfills.ts',
+        'vendor': './src/vendor.ts',
+        'app': './src/main.ts' // our angular app
+      };
+  }
 
   /**
    * Output
    * Reference: http://webpack.github.io/docs/configuration.html#output
    */
   config.output = isTest ? {} : {
-    path: root('dist'),
-    publicPath: isProd ? '/' : 'http://localhost:8080/',
-    filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
-    chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
-  };
+      path: root('dist'),
+      publicPath: isProd ? '/' : 'http://localhost:8080/',
+      filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
+      chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
+    };
 
   /**
    * Resolve
@@ -89,7 +91,7 @@ module.exports = function makeWebpackConfig() {
       // Support for .ts files.
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader?' + atlOptions, 'angular2-template-loader', '@angularclass/hmr-loader'],
+        loaders: ['awesome-typescript-loader?' + atlOptions, 'angular2-template-loader'],
         exclude: [isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/]
       },
 
@@ -108,7 +110,7 @@ module.exports = function makeWebpackConfig() {
       {
         test: /\.css$/,
         exclude: root('src', 'app'),
-        loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: ['css-loader', 'postcss-loader']})
+        loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'postcss-loader']})
       },
       // all css required in src/app files will be merged in js files
       {test: /\.css$/, include: root('src', 'app'), loader: 'raw-loader!postcss-loader'},
@@ -119,7 +121,7 @@ module.exports = function makeWebpackConfig() {
       {
         test: /\.(scss|sass)$/,
         exclude: root('src', 'app'),
-        loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: ['css-loader', 'postcss-loader', 'sass-loader']})
+        loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'postcss-loader', 'sass-loader']})
       },
       // all css required in src/app files will be merged in js files
       {test: /\.(scss|sass)$/, exclude: root('src', 'style'), loader: 'raw-loader!postcss-loader!sass-loader'},
@@ -242,7 +244,7 @@ module.exports = function makeWebpackConfig() {
     config.plugins.push(
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
       // Only emit files when there are no errors
-      new webpack.NoErrorsPlugin(),
+      new webpack.NoEmitOnErrorsPlugin(),
 
       // // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
       // // Dedupe modules in the output
