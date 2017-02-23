@@ -2,6 +2,10 @@
   margin: 0 auto;
   padding: 0;
 
+  &-black {
+    background-color: $_color-base-black;
+  }
+
   @include rem(max-width, 1600px);
 }
 

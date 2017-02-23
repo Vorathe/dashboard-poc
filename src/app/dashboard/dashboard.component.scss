@@ -1,9 +1,7 @@
 // component styles are encapsulated and only applied to their components
 :host {
-  flex: 1;
-  order: 1;
-  overflow: auto;
   color: #000;
+  display: block;
 }
 
 .content-head {

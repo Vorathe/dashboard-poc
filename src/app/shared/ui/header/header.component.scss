@@ -2,12 +2,30 @@
 @import '../../../../style/abstracts/palette';
 
 :host {
-  z-index: 0;
-  flex: 0 86px;
-  display: flex;
-  background: palette(grey, darker);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9998;
 }
 
 header {
-  flex: 1;
+  background-color: palette(black, lighter);
+}
+
+.header__content {
+  display: flex;
+
+  @include rem(padding, 20px 10px);
+
+  > .header__content_nav {
+    flex-shrink: 1;
+    flex-grow: 1;
+    min-width: 0;
+  }
+}
+
+.header__content_nav_app,
+.header__content_nav_brand {
+  display: inline-block;
 }
