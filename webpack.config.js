@@ -48,10 +48,10 @@ module.exports = function makeWebpackConfig() {
      * Reference: http://webpack.github.io/docs/configuration.html#entry
      */
     config.entry = isTest ? {} : {
-        'polyfills': './src/polyfills.ts',
-        'vendor': './src/vendor.ts',
-        'app': './src/main.ts' // our angular app
-      };
+      'polyfills': './src/polyfills.ts',
+      'vendor': './src/vendor.ts',
+      'app': './src/main.ts' // our angular app
+    };
   }
 
   /**
@@ -59,11 +59,11 @@ module.exports = function makeWebpackConfig() {
    * Reference: http://webpack.github.io/docs/configuration.html#output
    */
   config.output = isTest ? {} : {
-      path: root('dist'),
-      publicPath: isProd ? '/' : 'http://localhost:8080/',
-      filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
-      chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
-    };
+    path: root('dist'),
+    publicPath: isProd ? '/' : 'http://localhost:8080/',
+    filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
+    chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
+  };
 
   /**
    * Resolve
@@ -168,20 +168,11 @@ module.exports = function makeWebpackConfig() {
     }),
 
     // Workaround needed for angular 2 angular/angular#11580
-    new webpack.ContextReplacementPlugin(
-      // The (\\|\/) piece accounts for path separators in *nix and Windows
-      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-      root('./src') // location of your src
-    ),
-
-    new StyleLintPlugin({
-      configFile: '.stylelintrc',
-      context: 'src',
-      files: '**/*.scss',
-      failOnError: false,
-      quiet: false,
-      syntax: 'scss'
-    }),
+      new webpack.ContextReplacementPlugin(
+        // The (\\|\/) piece accounts for path separators in *nix and Windows
+        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+        root('./src') // location of your src
+      ),
 
     // Tslint configuration for webpack 2
     new webpack.LoaderOptionsPlugin({
@@ -213,6 +204,14 @@ module.exports = function makeWebpackConfig() {
           })
         ]
       }
+    }),
+    new StyleLintPlugin({
+      configFile: '.stylelintrc',
+      context: 'src',
+      files: '**/*.scss',
+      failOnError: false,
+      quiet: false,
+      syntax: 'scss'
     })
   ];
 

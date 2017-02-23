@@ -1,25 +1,5 @@
 // styles in src/style directory are applied to the whole page
-body {
-  background: #ccc;
-  color: #fff;
-}
-
-a {
-  color: #03a9f4;
-}
-
-.content-full {
-  margin: 0 auto;
-  padding: 0;
-  max-width: 1600px;
-}
-
-.content-grid {
-  margin: 0 auto;
-  padding: 0 2%;
-  max-width: 1600px;
-}
-
-#help {
-  color: pink;
-}
+@import './abstracts/functions';
+@import './abstracts/palette';
+@import './layout/global';
+@import './layout/content';

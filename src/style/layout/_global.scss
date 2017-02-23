@@ -1,0 +1,18 @@
+html,
+body,
+cmp-app {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: palette(grey, dark);
+  color: #fff;
+
+  @include rem(font-size, 14px);
+}
+
+a {
+  color: palette(blue);
+}

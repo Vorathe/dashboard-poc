@@ -1,0 +1,13 @@
+@import '../../../../style/abstracts/functions';
+@import '../../../../style/abstracts/palette';
+
+:host {
+  z-index: 0;
+  flex: 0 86px;
+  display: flex;
+  background: black;
+}
+
+header {
+  flex: 1;
+}

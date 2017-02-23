@@ -1,0 +1,13 @@
+.content-full {
+  margin: 0 auto;
+  padding: 0;
+
+  @include rem(max-width, 1600px);
+}
+
+.content-grid {
+  margin: 0 auto;
+
+  @include rem(padding, 20px);
+  @include rem(max-width, 1600px);
+}

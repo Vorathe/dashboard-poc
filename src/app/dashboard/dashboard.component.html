@@ -1,1 +1,51 @@
-<h2>Hi.</h2>
+<div class="content-grid">
+  <div class="content-head">
+    <h1>
+      Cards
+    </h1>
+    <div class="button-group">
+      <button [ngClass]="{active: view === 'card'}" (click)="view = 'card'">Card</button>
+      <button [ngClass]="{active: view === 'list'}" (click)="view = 'list'">List</button>
+    </div>
+  </div>
+</div>
+<div class="content-full">
+  <div class="grid">
+    <ng-container *ngFor="let card of data; let i = index; let l = last">
+      <div class="grid__col-md-4">
+        <div class="card" (click)="getSummary(i)">
+          <div class="card__header">
+            <div class="header__group">
+              <div class="header__customer">{{card.customerName}}</div>
+              <div class="header__deal">{{card.dealId}}</div>
+            </div>
+            <button [ngClass]="{pinned: card.pinned}" (click)="card.pinned = !card.pinned"><i class="material-icons">{{(card.pinned ? 'bookmark' : 'bookmark_border')}}</i></button>
+          </div>
+          <div class="card__content">
+            <div class="content__group">
+              <div class="content__app">{{card.appStatus}}</div>
+              <div class="content__card">
+                <div><small>{{card.businessType}}</small></div>
+                <div><small><strong>{{card.loanAmount}}</strong></small></div>
+              </div>
+            </div>
+          </div>
+          <div class="card__footer">
+            <div>Date: {{card.date}}</div>
+          </div>
+        </div>
+      </div>
+      <div [@slide] *ngIf="(i % 3 === 2 || i % 3 !== 2 && l) && (activeSummaryIndex === i && summaryActive)" class="grid__col-md-12">
+        <div class="card__summary" [ngClass]="{left: leftArrow, middle: midArrow, right: rightArrow}">
+          {{summaryData.customerName}}
+          <br />
+          Active Summary Index: {{activeSummaryIndex}}
+          <br />
+          Card Index: {{summaryData.cardIndex}}
+          <br />
+          <button (click)="summaryActive = false" style="margin-top: 8px;">Close</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

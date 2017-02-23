@@ -4,7 +4,8 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './shared';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { routing } from './app.routing';
 
 @NgModule({
@@ -16,12 +17,12 @@ import { routing } from './app.routing';
   ],
   declarations: [
     AppComponent,
-    HomeComponent
+    HeaderComponent,
+    DashboardComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-
 export class AppModule {
   constructor() {}
 }
