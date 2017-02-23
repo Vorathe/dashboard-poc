@@ -1,13 +1,45 @@
-.content-full {
+.content__full {
   margin: 0 auto;
   padding: 0;
 
   @include rem(max-width, 1600px);
 }
 
-.content-grid {
+.content__grid {
   margin: 0 auto;
 
-  @include rem(padding, 20px);
+  @include rem(padding, 10px);
   @include rem(max-width, 1600px);
+
+  &-white {
+    background-color: $_color-base-white;
+  }
+}
+
+.control__group {
+  display: none;
+  position: relative;
+
+  @include rem((
+    margin-left: 10px,
+    padding-left: 20px
+  ));
+
+  & > button:last-child {
+    border-left: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 1px;
+    background-color: #000;
+    top: 0;
+    bottom: 0;
+  }
+
+  @media (min-width: $reflex-sm) {
+    display: flex;
+  }
 }

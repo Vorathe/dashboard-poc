@@ -48,7 +48,9 @@
   padding: 8px;
 
   > .header__group {
+    flex-shrink: 1;
     flex-grow: 1;
+    min-width: 0;
   }
 
   > .header__group > .header__customer {
@@ -61,6 +63,15 @@
     &::before {
       content: 'Deal ID# ';
     }
+  }
+
+  > .header__group > .header__customer,
+  .header__group > .header__deal {
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   > button {
