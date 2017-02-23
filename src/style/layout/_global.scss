@@ -9,6 +9,7 @@ cmp-app {
 body {
   background: palette(grey, dark);
   color: #fff;
+  line-height: 1.5;
 
   @include rem(font-size, 14px);
 }
