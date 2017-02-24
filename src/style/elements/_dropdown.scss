@@ -1,0 +1,13 @@
+.dropdown {
+  background-color: $_color-base-white;
+  border-radius: 2px;
+  border: 1px solid $_color-base-black;
+  color: $_color-base-black;
+  align-items: center;
+  display: inline-block;
+  padding: 4px 10px;
+
+  i {
+    vertical-align: middle;
+  }
+}

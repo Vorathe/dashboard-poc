@@ -1,4 +1,6 @@
-// component styles are encapsulated and only applied to their components
+@import '../../style/abstracts/functions';
+@import '../../style/abstracts/palette';
+
 :host {
   color: #000;
   display: block;
@@ -18,8 +20,9 @@
   .button-group > button {
     background-color: #fff;
     border: 1px solid #333;
-    padding: 4px 8px;
     float: left;
+
+    @include rem(padding, 4px 8px);
 
     &:first-child {
       border-right: 0;
@@ -52,7 +55,9 @@
   }
 
   > .header__group > .header__customer {
-    font-size: 1.325em;
+    font-weight: bold;
+
+    @include rem(font-size, 18px);
   }
 
   > .header__group > .header__deal {

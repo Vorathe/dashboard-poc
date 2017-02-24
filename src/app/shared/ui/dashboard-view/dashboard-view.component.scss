@@ -1,0 +1,42 @@
+@import '../../../../style/abstracts/functions';
+@import '../../../../style/abstracts/palette';
+
+:host {
+  display: block;
+  background-color: $_color-base-white;
+  box-shadow: 0 2px 4px rgba(32, 32, 32, 0.15);
+  position: relative;
+  z-index: 10;
+}
+
+.dashboard__view {
+  color: #000;
+  display: flex;
+  align-items: center;
+
+  @include rem(padding, 0 10px);
+}
+
+.dashboard__view_label {
+  font-weight: bold;
+
+  @include rem(margin-right, 20px);
+  @include rem(font-size, 18px);
+}
+
+.dashboard__view_nav {
+  flex-grow: 1;
+
+  > ul > li {
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+
+    @include rem(padding, 20px);
+  }
+
+  > ul > li.dashboard__view_nav_item--active {
+    background-color: palette(blue, lightest);
+    font-weight: bold;
+    border-bottom: 2px solid palette(blue);
+  }
+}

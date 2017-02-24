@@ -17,4 +17,9 @@ body {
 
 a {
   color: palette(blue);
+  text-decoration: none;
+
+  &:hover {
+    color: palette(blue, light);
+  }
 }

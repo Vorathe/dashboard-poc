@@ -1,0 +1,64 @@
+@import '../../../../style/abstracts/functions';
+@import '../../../../style/abstracts/palette';
+
+:host {
+  display: block;
+  background-color: palette(white, dark);
+}
+
+.dashboard__controls {
+  display: flex;
+  align-items: center;
+
+  @include rem(padding, 20px 10px);
+}
+
+.dashboard__controls_group {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: auto;
+  position: relative;
+  flex-grow: 1;
+
+  @include rem((
+    padding-left: 20px,
+    margin-left: 20px
+  ));
+
+  > span {
+    color: $_color-base-black;
+  }
+
+  button {
+    cursor: pointer;
+    padding: 5px 0;
+    margin-left: 10px;
+    border: 0;
+    background-color: transparent;
+    border-bottom: 2px solid transparent;
+
+    span,
+    i {
+      vertical-align: middle;
+    }
+
+    &.btn--active {
+      color: palette(blue);
+      border-bottom-color: palette(blue);
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: $_color-base-black;
+  }
+}
+
+.dashboard__controls_list {
+  @include rem(padding, 0 30px 20px 30px);
+}

@@ -4,8 +4,9 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared';
+import { HeaderComponent, DashboardViewComponent, DashboardControlsComponent } from './shared';
 import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { routing } from './app.routing';
 
 @NgModule({
@@ -18,7 +19,9 @@ import { routing } from './app.routing';
   declarations: [
     AppComponent,
     HeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    DashboardViewComponent,
+    DashboardControlsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -32,6 +32,7 @@ $palettes: (
     base: $_color-base-blue,
     light:  lighten($_color-base-blue, 10%),
     lighter: lighten($_color-base-blue, 15%),
+    lightest: lighten($_color-base-blue, 35%),
     dark: darken($_color-base-blue, 10%),
     darker: darken($_color-base-blue, 15%)
   )
