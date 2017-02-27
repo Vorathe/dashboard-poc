@@ -14,8 +14,11 @@ header {
 }
 
 .header__content {
+  position: relative;
   display: flex;
   align-items: center;
+  background-color: palette(black, lighter);
+  z-index: 12;
 
   @include rem(padding, 20px 10px);
 
@@ -62,4 +65,8 @@ header {
   background-color: $_color-base-white;
 
   @include rem(padding, 4px 8px);
+
+  &.active {
+    color: palette(blue);
+  }
 }

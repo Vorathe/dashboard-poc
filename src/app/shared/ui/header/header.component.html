@@ -2,10 +2,15 @@
   <div class="content__full">
     <div class="header__content">
       <div class="header__content_nav">
-        <button class="header__content_nav_menu">
-          <i class="material-icons">menu</i>
+        <button class="header__content_nav_menu" (click)="openNav()">
+          <div class="nav-icon" [ngClass]="{open: navOpen}">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </button>
-        <div class="header__content_nav_brand">
+        <div class="header__content_nav_brand" [ngClass]="{active: navOpen}">
           Daimler Truck Financial
         </div>
         <div class="header__content_nav_app">
@@ -13,11 +18,13 @@
         </div>
       </div>
       <div class="header__content_control">
-        <i class="material-icons">menu</i>
+        <!--Search, Notifications, etc-->
       </div>
+
     </div>
+    <cmp-header-nav [navVisible]="navOpen"></cmp-header-nav>
   </div>
 </header>
 <cmp-dashboard-view></cmp-dashboard-view>
 <cmp-dashboard-controls></cmp-dashboard-controls>
-<cmp-header-nav></cmp-header-nav>
+

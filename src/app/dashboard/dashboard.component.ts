@@ -263,6 +263,11 @@ export class DashboardComponent {
 
   constructor() {}
 
+  togglePin(card, event) {
+    card.pinned = !card.pinned;
+    event.stopPropagation();
+  }
+
   getSummary(index) {
     this.activeSummaryIndex = 0;
     let indexArr = [];
@@ -270,7 +275,6 @@ export class DashboardComponent {
     this.leftArrow = false;
     this.midArrow = false;
     this.rightArrow = false;
-    this.summaryActive = true;
     // console.log('clicked index', index);
     console.log(index % 3);
     for ( let i = 3; i < this.data.length + 1 ; i = i + 3 ) {
@@ -294,6 +298,7 @@ export class DashboardComponent {
     }
     this.activeSummaryIndex = indexArr[0];
     // console.log('Active Summary Index -> ', this.activeSummaryIndex);
+    this.summaryActive = true;
     this.summaryData = {
       customerName: this.data[index].customerName,
       businessType: this.data[index].businessType,

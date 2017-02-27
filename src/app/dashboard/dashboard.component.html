@@ -1,4 +1,4 @@
-<div class="content__grid content__grid-white">
+<div class="content__grid">
   <div class="grid">
     <ng-container *ngFor="let card of data; let i = index; let l = last">
       <div class="grid__col-sm-4">
@@ -8,7 +8,7 @@
               <div class="header__customer">{{card.customerName}}</div>
               <div class="header__deal">{{card.dealId}}</div>
             </div>
-            <button [ngClass]="{pinned: card.pinned}" (click)="card.pinned = !card.pinned"><i class="material-icons">{{(card.pinned ? 'bookmark' : 'bookmark_border')}}</i></button>
+            <button [ngClass]="{pinned: card.pinned}" (click)="togglePin(card, $event)"><i class="material-icons">{{(card.pinned ? 'bookmark' : 'bookmark_border')}}</i></button>
           </div>
           <div class="card__content">
             <div class="content__group">

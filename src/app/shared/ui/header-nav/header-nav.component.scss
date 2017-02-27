@@ -1,1 +1,33 @@
-/* stylelint-disable no-empty-source */
+@import '../../../../style/abstracts/functions';
+@import '../../../../style/abstracts/palette';
+@import '../../../../style/layout/grid/variables';
+
+:host {
+  position: relative;
+  display: block;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  background-color: palette(black, lighter);
+
+  @include rem(min-width, 194px);
+  @include rem(padding, 20px);
+}
+
+.nav__category_header {
+  font-weight: bold;
+
+  @include rem(margin-bottom, 10px);
+}
+
+.nav__item {
+  @include rem(padding, 10px 0);
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
