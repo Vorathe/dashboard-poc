@@ -1,8 +1,10 @@
-// styles applied on :host are applied on the current component, "app" in this case
+@import '../style/abstracts/functions';
+@import '../style/abstracts/palette';
+
 :host {
   display: block;
 }
 
 main {
-  margin-top: 86px;
+  @include rem(margin-top, 269px);
 }

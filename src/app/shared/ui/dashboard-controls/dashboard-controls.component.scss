@@ -60,5 +60,37 @@
 }
 
 .dashboard__controls_list {
+  color: $_color-base-black;
+
+  @include rem(font-size, 10px);
   @include rem(padding, 0 30px 20px 30px);
+}
+
+.dashboard__controls_list_header {
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.dashboard__controls_list_view {
+  display: flex;
+}
+
+.dashboard__controls_list_view_item {
+  margin-right: 5px;
+
+  @include rem(font-size, 12px);
+
+  &::before {
+    content: '/';
+    margin-right: 5px;
+  }
+
+  &:first-child::before {
+    content: '';
+    margin-right: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
