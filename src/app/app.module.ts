@@ -4,7 +4,14 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent, DashboardViewComponent, DashboardControlsComponent } from './shared';
+
+import {
+  HeaderComponent,
+  HeaderNavComponent,
+  DashboardViewComponent,
+  DashboardControlsComponent
+} from './shared';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { routing } from './app.routing';
@@ -19,6 +26,7 @@ import { routing } from './app.routing';
   declarations: [
     AppComponent,
     HeaderComponent,
+    HeaderNavComponent,
     DashboardComponent,
     DashboardViewComponent,
     DashboardControlsComponent

@@ -15,6 +15,7 @@ header {
 
 .header__content {
   display: flex;
+  align-items: center;
 
   @include rem(padding, 20px 10px);
 
@@ -22,10 +23,43 @@ header {
     flex-shrink: 1;
     flex-grow: 1;
     min-width: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  > .header__content_nav > * {
+    @include rem(margin-right, 14px);
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
 
 .header__content_nav_app,
 .header__content_nav_brand {
   display: inline-block;
+}
+
+.header__content_nav_menu {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  color: $_color-base-white;
+  vertical-align: middle;
+
+  &:focus {
+    outline: 0;
+  }
+
+  > i {
+    vertical-align: middle;
+  }
+}
+
+.header__content_nav_brand {
+  color: $_color-base-black;
+  background-color: $_color-base-white;
+
+  @include rem(padding, 4px 8px);
 }

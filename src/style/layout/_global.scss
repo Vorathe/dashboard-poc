@@ -18,10 +18,15 @@ body {
 a {
   color: palette(blue);
   text-decoration: none;
+  cursor: pointer;
 
   &:hover {
     color: palette(blue, light);
   }
+}
+
+button {
+  cursor: pointer;
 }
 
 strong {
