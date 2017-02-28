@@ -40,6 +40,7 @@
     "reset-css": "^2.2.0",
     "rxjs": "5.0.1",
     "sillyname": "^0.1.0",
+    "web-animations-js": "^2.2.2",
     "zone.js": "^0.7.2"
   },
   "devDependencies": {

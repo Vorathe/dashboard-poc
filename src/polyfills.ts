@@ -2,7 +2,9 @@ import 'core-js/client/shim';
 import 'reflect-metadata';
 require('zone.js/dist/zone');
 
+import 'web-animations-js';
 import 'ts-helpers';
+
 
 if (process.env.ENV === 'build') {
   // Production

@@ -10,9 +10,9 @@ import {
   HeaderNavComponent,
   DashboardViewComponent,
   DashboardControlsComponent
-} from './shared';
+} from './shared/ui';
 
-import { WindowRefService } from './shared';
+import { WindowRefService } from './shared/services';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 
