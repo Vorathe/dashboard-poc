@@ -12,6 +12,8 @@ import {
   DashboardControlsComponent
 } from './shared';
 
+import { WindowRefService } from './shared';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { routing } from './app.routing';
@@ -31,7 +33,7 @@ import { routing } from './app.routing';
     DashboardViewComponent,
     DashboardControlsComponent
   ],
-  providers: [],
+  providers: [WindowRefService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
