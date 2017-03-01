@@ -9,11 +9,13 @@ import { WindowRefService } from '../../services';
     trigger('scrollState', [
       state('hide', style({
         opacity: '0',
-        transform: 'translateY(-100%)'
+        transform: 'translateY(-100%)',
+        display: 'none'
       })),
       state('show', style({
         opacity: '1',
-        transform: 'translateY(0)'
+        transform: 'translateY(0)',
+        display: 'block'
       })),
       transition('hide => show', animate('100ms ease-in')),
       transition('show => hide', animate('100ms ease-out'))
