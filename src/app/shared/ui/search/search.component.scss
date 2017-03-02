@@ -1,0 +1,67 @@
+@import '../../../../style/abstracts/functions';
+@import '../../../../style/abstracts/palette';
+
+$whiteState: rgba(255, 255, 255, 1);
+$transState: rgba(255, 255, 255, 0);
+
+:host {
+  display: block;
+}
+
+.search {
+  position: relative;
+
+  &--active .search__content {
+    border-color: transparent;
+    background-color: $whiteState;
+    transition: all 200ms linear;
+    box-shadow: 0 0 3px rgba(35, 35, 35, 0.25);
+  }
+
+  &--active .search__content i {
+    color: $_color-base-black;
+  }
+}
+
+.search__expander {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: palette(blue);
+  z-index: 9;
+  opacity: 1;
+  transform: scale(1.14, 2.25);
+}
+
+.search__content {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid palette(grey, darkest);
+  z-index: 10;
+  background-color: $transState;
+  transition: background-color 200ms linear;
+
+  @include rem(padding-left, 8px);
+
+  i {
+    transition: color 200ms ease;
+  }
+
+  input {
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+
+    &:focus {
+      outline: 0;
+    }
+
+    @include rem((
+      min-width: 240px,
+      padding: 7px
+    ));
+  }
+}

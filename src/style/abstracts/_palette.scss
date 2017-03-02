@@ -26,7 +26,8 @@ $palettes: (
   black: (
     base:     $_color-base-black,
     light:    lighten($_color-base-black, 10%),
-    lighter:  lighten($_color-base-black, 15%)
+    lighter:  lighten($_color-base-black, 15%),
+    lightest: lighten($_color-base-black, 25%)
   ),
   blue: (
     base: $_color-base-blue,

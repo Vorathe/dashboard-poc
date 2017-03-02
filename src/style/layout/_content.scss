@@ -1,6 +1,7 @@
 .content__full {
   margin: 0 auto;
-  padding: 0;
+
+  @include rem(padding, 0 10px);
 
   &-black {
     background-color: $_color-base-black;
