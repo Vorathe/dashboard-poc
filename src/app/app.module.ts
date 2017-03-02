@@ -10,7 +10,8 @@ import {
   HeaderNavComponent,
   DashboardViewComponent,
   DashboardControlsComponent,
-  SearchComponent
+  SearchComponent,
+  SearchTrayComponent
 } from './shared/ui';
 
 import { WindowRefService } from './shared/services';
@@ -33,7 +34,8 @@ import { routing } from './app.routing';
     DashboardComponent,
     DashboardViewComponent,
     DashboardControlsComponent,
-    SearchComponent
+    SearchComponent,
+    SearchTrayComponent
   ],
   providers: [WindowRefService],
   bootstrap: [AppComponent]

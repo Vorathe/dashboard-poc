@@ -1,4 +1,4 @@
-import {Component, OnInit, animate, transition, style, keyframes, trigger } from '@angular/core';
+import { Component, OnInit, animate, transition, style, keyframes, trigger } from '@angular/core';
 
 @Component({
   selector: 'cmp-search',
@@ -34,7 +34,8 @@ import {Component, OnInit, animate, transition, style, keyframes, trigger } from
   ]
 })
 export class SearchComponent implements OnInit {
-  searchOpen = false;
+  searchOpen: boolean;
+  searchVal: string;
 
   constructor() { }
 
@@ -42,6 +43,10 @@ export class SearchComponent implements OnInit {
 
   openSearch() {
     this.searchOpen = !this.searchOpen;
+  }
+
+  handleChange(value) {
+    this.searchOpen = value;
   }
 
 }

@@ -1,0 +1,7 @@
+<div class="tray" [@tray] *ngIf="trayVisible && searchContent">
+  Search value: {{searchContent}}
+  <button class="btn btn--close" (click)="closeTray()">
+    <i class="material-icons">close</i>
+  </button>
+</div>
+<div class="overlay" [@overlay] *ngIf="trayVisible" (click)="closeTray()"></div>

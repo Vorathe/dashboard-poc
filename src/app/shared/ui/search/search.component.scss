@@ -6,6 +6,7 @@ $transState: rgba(255, 255, 255, 0);
 
 :host {
   display: block;
+  position: relative;
 }
 
 .search {
@@ -18,7 +19,8 @@ $transState: rgba(255, 255, 255, 0);
     box-shadow: 0 0 3px rgba(35, 35, 35, 0.25);
   }
 
-  &--active .search__content i {
+  &--active .search__content i,
+  &--active .search__content input {
     color: $_color-base-black;
   }
 }
@@ -54,6 +56,7 @@ $transState: rgba(255, 255, 255, 0);
     margin: 0;
     border: 0;
     background-color: transparent;
+    color: $_color-base-white;
 
     &:focus {
       outline: 0;
