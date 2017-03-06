@@ -7,6 +7,8 @@ $transState: rgba(255, 255, 255, 0);
 :host {
   display: block;
   position: relative;
+
+  @include rem(margin-right, 20px);
 }
 
 .search {

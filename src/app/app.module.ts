@@ -11,7 +11,8 @@ import {
   DashboardViewComponent,
   DashboardControlsComponent,
   SearchComponent,
-  SearchTrayComponent
+  SearchTrayComponent,
+  NotificationsComponent
 } from './shared/ui';
 
 import { WindowRefService } from './shared/services';
@@ -35,7 +36,8 @@ import { routing } from './app.routing';
     DashboardViewComponent,
     DashboardControlsComponent,
     SearchComponent,
-    SearchTrayComponent
+    SearchTrayComponent,
+    NotificationsComponent
   ],
   providers: [WindowRefService],
   bootstrap: [AppComponent]
