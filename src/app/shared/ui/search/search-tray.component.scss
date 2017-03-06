@@ -24,9 +24,7 @@
   position: fixed;
   background-color: rgba(35, 35, 35, 0.5);
   z-index: 1;
-
-  @include rem(top, 51px);
-
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;

@@ -1,7 +1,7 @@
 <div class="search" [ngClass]="{'search--active': searchOpen}">
-  <div class="search__content" (click)="openSearch()">
+  <div class="search__content">
     <i class="material-icons">search</i>
-    <input type="text" placeholder="Find Customers, VINs, Deals, etc." [(ngModel)]="searchVal">
+    <input type="text" placeholder="Find Customers, VINs, Deals, etc." [(ngModel)]="searchVal" (focus)="openSearch()">
   </div>
   <div class="search__expander" [@expander] *ngIf="searchOpen"></div>
 </div>
