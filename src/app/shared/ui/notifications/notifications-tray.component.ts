@@ -4,9 +4,9 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'cmp-search-tray',
-  templateUrl: './search-tray.component.html',
-  styleUrls: ['./search-tray.component.scss'],
+  selector: 'cmp-notify-tray',
+  templateUrl: './notifications-tray.component.html',
+  styleUrls: ['./notifications-tray.component.scss'],
   animations: [
     trigger('tray', [
       transition('void => *', [
@@ -25,28 +25,10 @@ import {
           ])
         )
       ])
-    ]),
-    trigger('overlay', [
-      transition('void => *', [
-        animate(200,
-          keyframes([
-            style({ opacity: '0' }),
-            style({ opacity: '1' })
-          ])
-        )
-      ]),
-      transition('* => void', [
-        animate(200,
-          keyframes([
-            style({ opacity: '1' }),
-            style({ opacity: '0' })
-          ])
-        )
-      ])
     ])
   ]
 })
-export class SearchTrayComponent implements OnInit {
+export class NotifyTrayComponent implements OnInit {
   @Input() trayVisible: boolean;
   @Input() searchContent: string;
   @Output() visibilityUpdated = new EventEmitter();

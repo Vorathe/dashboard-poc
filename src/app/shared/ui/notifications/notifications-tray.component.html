@@ -1,0 +1,42 @@
+<div class="tray" [@tray] *ngIf="trayVisible">
+  <div class="tray__header">
+    <h3>Notifications</h3>
+    <button class="btn btn--read" (click)="closeTray()">
+      Mark all as read
+    </button>
+  </div>
+  <ul class="tray__content">
+    <li class="tray__content_item">
+      <div class="tray__content_item_type">
+        <i class="material-icons">info</i>
+      </div>
+      <div class="tray__content_item_group">
+        <div class="date">
+          Today, 3:03pm
+        </div>
+        <div class="content">
+          Travel time to the nearest starbase? And blowing into maximum warp speed, you appeared for an instant to be in two places at once.
+        </div>
+      </div>
+      <div class="tray__content_item_action">
+        <i class="material-icons">keyboard_arrow_right</i>
+      </div>
+    </li>
+    <li class="tray__content_item">
+      <div class="tray__content_item_type">
+        <i class="material-icons">warning</i>
+      </div>
+      <div class="tray__content_item_group">
+        <div class="date">
+          Today, 11:28am
+        </div>
+        <div class="content">
+          A surprise party? Mr. Worf, I hate surprise parties. I would *never* do that to you. When has justice ever been as simple as a rule book?
+        </div>
+      </div>
+      <div class="tray__content_item_action">
+        <i class="material-icons">keyboard_arrow_right</i>
+      </div>
+    </li>
+  </ul>
+</div>

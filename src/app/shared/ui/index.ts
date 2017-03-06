@@ -5,3 +5,4 @@ export { DashboardControlsComponent } from './dashboard-controls/dashboard-contr
 export { SearchComponent } from './search/search.component';
 export { SearchTrayComponent } from './search/search-tray.component';
 export { NotificationsComponent } from './notifications/notifications.component';
+export { NotifyTrayComponent } from './notifications/notifications-tray.component';

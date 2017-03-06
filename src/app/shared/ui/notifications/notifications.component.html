@@ -1,4 +1,6 @@
-<button>
+<button (click)="openNotify()" [ngClass]="{active: notifyOpen}">
   <i class="material-icons">notifications</i>
   <span class="badge">99</span>
 </button>
+<div class="notify__expander" [@expander] *ngIf="notifyOpen"></div>
+<cmp-notify-tray [trayVisible]="notifyOpen" (visibilityUpdated)="handleChange($event)"></cmp-notify-tray>
