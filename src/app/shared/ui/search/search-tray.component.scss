@@ -34,9 +34,65 @@
 
 .btn {
   padding: 0;
-  float: right;
 }
 
 .btn--close i {
   vertical-align: middle;
+}
+
+.tray__header {
+  display: flex;
+  align-items: center;
+
+  @include rem (margin-bottom, 10px);
+
+  > h3 {
+    flex-grow: 1;
+    font-weight: bold;
+
+    @include rem(font-size, 18px);
+  }
+}
+
+.tray__tabs {
+  display: flex;
+
+  @include rem(margin-bottom, 20px);
+
+  > li {
+    flex: 1;
+    border-bottom: 4px solid transparent;
+    cursor: pointer;
+
+    @include rem(padding, 10px 0);
+    @include rem(margin, 0 5px);
+
+    &.tray__tabs--active {
+      font-weight: bold;
+      border-bottom-color: palette(blue);
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.tray__content_all_results > li {
+  display: flex;
+  align-items: center;
+}
+
+.tray__content_type {
+  border: 1px solid black;
+  background-color: palette(grey, light);
+
+  @include rem((
+    padding: 3px 5px,
+    margin-right: 10px
+  ));
 }

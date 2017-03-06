@@ -1,7 +1,22 @@
 <div class="tray" [@tray] *ngIf="trayVisible && searchContent">
-  Search value: {{searchContent}}
-  <button class="btn btn--close" (click)="closeTray()">
-    <i class="material-icons">close</i>
-  </button>
+  <div class="tray__header">
+    <h3>Search Results</h3>
+    <button class="btn btn--close" (click)="closeTray()">
+      <i class="material-icons">close</i>
+    </button>
+  </div>
+  <ul class="tray__tabs">
+    <li class="tray__tabs--active">All Results</li>
+    <li>Tab</li>
+    <li>Tab</li>
+    <li>Tab</li>
+    <li>Tab</li>
+  </ul>
+  <ul class="tray__content tray__content_all_results">
+    <li>
+      <div class="tray__content_type">Customer</div>
+      <div class="tray__content_item">The game's not big enough unless it scares you a little. Your head is not an artifact!</div>
+    </li>
+  </ul>
 </div>
 <div class="overlay" [@overlay] *ngIf="trayVisible" (click)="closeTray()"></div>
