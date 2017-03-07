@@ -7,7 +7,7 @@ import { Component, OnInit, animate, transition, style, keyframes, trigger } fro
   animations: [
     trigger('expander', [
       transition('void => *', [
-        animate(320,
+        animate(180,
           keyframes([
             style({ transform: 'scale(0, 0)' }),
             style({ transform: 'scale(0.2, 0)' }),
@@ -21,7 +21,7 @@ import { Component, OnInit, animate, transition, style, keyframes, trigger } fro
         )
       ]),
       transition('* => void', [
-        animate(200,
+        animate(180,
           keyframes([
             style({ transform: 'scale(1, 1)' }),
             style({ transform: 'scale(1, 0.8)' }),
