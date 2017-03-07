@@ -14,7 +14,7 @@ header {
   position: relative;
   z-index: 11;
 
-  @include rem(height, 69px);
+  @include rem(height, 71px);
 }
 
 .header__content {
@@ -70,7 +70,7 @@ header {
   color: $_color-base-black;
   background-color: $_color-base-white;
 
-  @include rem(padding, 4px 8px);
+  @include rem(padding, 5px 8px);
 
   &.active {
     color: palette(blue);
