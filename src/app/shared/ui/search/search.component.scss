@@ -31,7 +31,7 @@ $transState: rgba(255, 255, 255, 0);
 
 .search__expander {
   position: absolute;
-  top: -1px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -68,7 +68,7 @@ $transState: rgba(255, 255, 255, 0);
 
     @include rem((
       min-width: 240px,
-      padding: 7px
+      padding: 6px
     ));
   }
 }

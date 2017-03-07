@@ -8,10 +8,10 @@
   z-index: 2;
   border: 1px solid $_color-base-black;
   border-top: 0;
+  right: 0;
 
   @include rem((
-    top: 71px,
-    right: 0,
+    top: 69px,
     width: 320px,
     padding: 20px
   ));

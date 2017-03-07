@@ -10,10 +10,10 @@
   background-color: #fff;
   color: $_color-base-black;
   z-index: 2;
+  right: 0;
 
   @include rem((
-    top: 71px,
-    right: 0,
+    top: 69px,
     height: 340px,
     width: 620px,
     padding: 20px

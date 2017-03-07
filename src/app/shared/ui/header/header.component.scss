@@ -13,6 +13,8 @@ header {
   background-color: palette(black, lighter);
   position: relative;
   z-index: 11;
+
+  @include rem(height, 69px);
 }
 
 .header__content {
