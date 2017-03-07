@@ -13,6 +13,7 @@ import {
         animate(200,
           keyframes([
             style({ opacity: '0', height: '0' }),
+            style({ opacity: '0.5', height: '*' }),
             style({ opacity: '1', height: '*' })
           ])
         )
@@ -21,6 +22,7 @@ import {
         animate(200,
           keyframes([
             style({ opacity: '1', height: '*' }),
+            style({ opacity: '0.5', height: '*' }),
             style({ opacity: '0', height: '0' })
           ])
         )

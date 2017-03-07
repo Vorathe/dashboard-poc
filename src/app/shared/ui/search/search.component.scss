@@ -7,12 +7,14 @@ $transState: rgba(255, 255, 255, 0);
 :host {
   display: block;
   position: relative;
-
-  @include rem(margin-right, 28px);
+  align-self: stretch;
 }
 
 .search {
   position: relative;
+  overflow: hidden;
+
+  @include rem(padding, 20px);
 
   &--active .search__content {
     border-color: transparent;
@@ -36,7 +38,7 @@ $transState: rgba(255, 255, 255, 0);
   background-color: palette(blue);
   z-index: 9;
   opacity: 1;
-  transform: scale(1.14, 2.25);
+  transform: scale(1);
 }
 
 .search__content {

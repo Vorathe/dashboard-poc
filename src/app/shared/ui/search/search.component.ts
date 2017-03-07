@@ -7,25 +7,29 @@ import { Component, OnInit, animate, transition, style, keyframes, trigger } fro
   animations: [
     trigger('expander', [
       transition('void => *', [
-        animate(180,
+        animate(320,
           keyframes([
             style({ transform: 'scale(0, 0)' }),
-            style({ transform: 'scale(1, 0)' }),
-            style({ transform: 'scale(1, 1)' }),
-            style({ transform: 'scale(1.14, 1.25)' }),
-            style({ transform: 'scale(1.14, 1.75)' }),
-            style({ transform: 'scale(1.14, 2.25)' })
+            style({ transform: 'scale(0.2, 0)' }),
+            style({ transform: 'scale(0.4, 0)' }),
+            style({ transform: 'scale(0.6, 0)' }),
+            style({ transform: 'scale(0.8, 0.2)' }),
+            style({ transform: 'scale(1, 0.4)' }),
+            style({ transform: 'scale(1, 0.8)' }),
+            style({ transform: 'scale(1, 1)' })
           ])
         )
       ]),
       transition('* => void', [
-        animate(180,
+        animate(200,
           keyframes([
-            style({ transform: 'scale(1.14, 2.25)' }),
-            style({ transform: 'scale(1.14, 1.75)' }),
-            style({ transform: 'scale(1.14, 1.25)' }),
             style({ transform: 'scale(1, 1)' }),
-            style({ transform: 'scale(1, 0)' }),
+            style({ transform: 'scale(1, 0.8)' }),
+            style({ transform: 'scale(1, 0.4)' }),
+            style({ transform: 'scale(0.8, 0.2)' }),
+            style({ transform: 'scale(0.6, 0)' }),
+            style({ transform: 'scale(0.4, 0)' }),
+            style({ transform: 'scale(0.2, 0)' }),
             style({ transform: 'scale(0, 0)' })
           ])
         )

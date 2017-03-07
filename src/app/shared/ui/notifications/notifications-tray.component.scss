@@ -6,10 +6,12 @@
   background-color: #fff;
   color: $_color-base-black;
   z-index: 2;
+  border: 1px solid $_color-base-black;
+  border-top: 0;
 
   @include rem((
-    top: 48px,
-    right: -9px,
+    top: 71px,
+    right: 0,
     width: 320px,
     padding: 20px
   ));
