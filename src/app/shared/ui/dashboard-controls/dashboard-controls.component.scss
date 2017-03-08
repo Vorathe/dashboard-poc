@@ -27,15 +27,20 @@
 
   > span {
     color: $_color-base-black;
+
+    @include rem(margin-right, 7px);
   }
 
   button {
     cursor: pointer;
-    padding: 5px 0;
-    margin-left: 10px;
     border: 0;
     background-color: transparent;
-    border-bottom: 2px solid transparent;
+    transition: all 180ms linear;
+
+    @include rem((
+      padding: 5px 0,
+      margin-right: 10px
+    ));
 
     span,
     i {
@@ -45,6 +50,10 @@
     &.btn--active {
       color: palette(blue);
       border-bottom-color: palette(blue);
+    }
+
+    &:focus {
+      outline: 0;
     }
   }
 
@@ -56,6 +65,27 @@
     bottom: 0;
     width: 1px;
     background-color: $_color-base-black;
+  }
+}
+
+.button__group {
+  display: inline-block;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    height: 3px;
+    bottom: 0;
+    width: 67px;
+    background-color: palette(blue);
+    transform: translateX(0);
+    transition: all 180ms ease-in-out;
+  }
+
+  &.list::before {
+    transform: translateX(153%);
+    width: 53px;
   }
 }
 

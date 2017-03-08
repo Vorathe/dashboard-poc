@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'cmp-dashboard-controls',
@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
 })
 
 export class DashboardControlsComponent {
+  @Input() view: string;
+  @Output() viewUpdated = new EventEmitter();
+
   constructor() { }
+
+  changeView(type) {
+    this.view = type;
+    this.viewUpdated.emit(this.view);
+  }
 }

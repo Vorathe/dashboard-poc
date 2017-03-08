@@ -258,6 +258,7 @@ export class DashboardComponent {
   leftArrow = false;
   midArrow = false;
   rightArrow = false;
+  activeItemIndex = 0;
 
   view = 'card';
 
@@ -275,8 +276,8 @@ export class DashboardComponent {
     this.leftArrow = false;
     this.midArrow = false;
     this.rightArrow = false;
-    // console.log('clicked index', index);
-    console.log(index % 3);
+    this.activeItemIndex = index;
+
     for ( let i = 3; i < this.data.length + 1 ; i = i + 3 ) {
       if (index < i) {
         indexArr.push(i - 1);
@@ -286,23 +287,25 @@ export class DashboardComponent {
         indexArr.push(i + 1);
       }
     }
+
     if (index % 3 === 0) {
-      console.log('left');
       this.leftArrow = true;
     } else if (index % 3 === 1) {
-      console.log('middle');
       this.midArrow = true;
     } else {
-      console.log('right');
       this.rightArrow = true;
     }
+
     this.activeSummaryIndex = indexArr[0];
-    // console.log('Active Summary Index -> ', this.activeSummaryIndex);
     this.summaryActive = true;
     this.summaryData = {
       customerName: this.data[index].customerName,
       businessType: this.data[index].businessType,
       cardIndex: index
     };
+  }
+
+  handleViewChange(event) {
+    this.view = event;
   }
 }

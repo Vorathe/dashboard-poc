@@ -42,6 +42,10 @@
   &.card--list {
     display: flex;
   }
+
+  &.card--list + .card__summary {
+    @include rem(margin-top, 20px);
+  }
 }
 
 .card__header {
@@ -100,18 +104,20 @@
 
 .card--list > .card__header > .header__group {
   display: flex;
-  flex-wrap: wrap;
 }
 
 .card--list > .card__header > .header__group > .header__customer {
-  font-size: 1em;
   flex-grow: 1;
+  font-weight: normal;
+
+  @include rem(font-size, 14px);
 
   &::before {
     font-weight: bold;
     content: 'Customer';
     display: block;
-    margin-bottom: 2px;
+
+    @include rem(margin-bottom, 2px);
   }
 }
 
@@ -127,7 +133,7 @@
 }
 
 .card__content {
-  padding: 8px;
+  @include rem(padding, 8px);
 
   > .content__group > .content__app {
     font-weight: bold;
@@ -136,6 +142,11 @@
       content: 'Application: ';
       font-weight: normal;
     }
+  }
+
+  .btn--pin {
+    align-self: flex-end;
+    height: 100%;
   }
 }
 
@@ -159,6 +170,16 @@
 .card--list > .card__content > .content__group {
   display: flex;
   flex-wrap: wrap;
+
+  button {
+    &:focus {
+      outline: 0;
+    }
+
+    &.pinned {
+      color: palette(blue);
+    }
+  }
 }
 
 .content__step {
@@ -197,8 +218,9 @@
 .card__summary {
   background-color: #fff;
   border: 1px solid #333;
-  padding: 8px;
   position: relative;
+
+  @include rem(padding, 8px);
 
   &::after,
   &::before {
@@ -216,8 +238,11 @@
   &::after {
     border-color: rgba(255, 255, 255, 0);
     border-bottom-color: #fff;
-    border-width: 16px;
-    margin-left: -16px;
+
+    @include rem((
+      margin-left: -16px,
+      border-width: 16px
+    ));
   }
 
   &::before {
@@ -225,6 +250,11 @@
     border-bottom-color: #333;
     border-width: 17px;
     margin-left: -17px;
+
+    @include rem((
+      margin-left: -17px,
+      border-width: 17px
+    ));
   }
 
   &.left::after,
@@ -245,7 +275,8 @@
   button {
     background-color: #fff;
     border: 1px solid #333;
-    padding: 8px;
     text-transform: uppercase;
+
+    @include rem(padding, 8px);
   }
 }

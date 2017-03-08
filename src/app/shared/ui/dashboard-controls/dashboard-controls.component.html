@@ -6,8 +6,10 @@
     </div>
     <div class="dashboard__controls_group">
       <span>View as&nbsp;</span>
-      <button class="btn btn-icon btn--active"><span>Cards&nbsp;&nbsp;</span><i class="material-icons">grid_on</i></button>
-      <button class="btn btn-icon"><span>List&nbsp;&nbsp;</span><i class="material-icons">view_list</i></button>
+      <div class="button__group" [ngClass]="{card: view ==='card', list: view === 'list'}">
+        <button class="btn btn-icon" [ngClass]="{'btn--active': view === 'card'}" (click)="changeView('card')"><span>Cards&nbsp;&nbsp;</span><i class="material-icons">grid_on</i></button>
+        <button class="btn btn-icon" [ngClass]="{'btn--active': view === 'list'}" (click)="changeView('list')"><span>List&nbsp;&nbsp;</span><i class="material-icons">view_list</i></button>
+      </div>
     </div>
   </div>
   <div class="dashboard__controls_list">

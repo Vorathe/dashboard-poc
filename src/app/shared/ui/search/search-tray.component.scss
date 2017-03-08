@@ -59,11 +59,14 @@
 
   > li {
     flex: 1;
-    border-bottom: 4px solid transparent;
+    border-bottom: 3px solid transparent;
     cursor: pointer;
 
-    @include rem(padding, 10px 0);
-    @include rem(margin, 0 5px);
+    @include rem((
+      padding: 10px 0,
+      margin: 0 5px,
+      border-width: 3px
+    ));
 
     &.tray__tabs--active {
       font-weight: bold;
