@@ -9,18 +9,18 @@ let sillyname = require('sillyname');
   animations: [
     trigger('slide', [
       transition('void => *', [
-        animate(200,
+        animate(100,
           keyframes([
-            style({ opacity: '0', maxHeight: '0' }),
-            style({ opacity: '1', maxHeight: '800px' })
+            style({ opacity: '0', height: '0' }),
+            style({ opacity: '1', height: '240px' })
           ])
         )
       ]),
       transition('* => void', [
-        animate(200,
+        animate(100,
           keyframes([
-            style({ opacity: '1', maxHeight: '800px' }),
-            style({ opacity: '0', maxHeight: '0' })
+            style({ opacity: '1', height: '240px' }),
+            style({ opacity: '0', height: '0' })
           ])
         )
       ])
