@@ -1,6 +1,6 @@
 <div class="content__full">
   <div class="dashboard__controls">
-    <div class="dropdown">
+    <div class="dropdown" (click)="showFilters()" [ngClass]="{'dropdown--open': filtersOpen}">
       Show Page-View Controls
       <i class="material-icons">keyboard_arrow_down</i>
     </div>
@@ -9,6 +9,18 @@
       <div class="button__group" [ngClass]="{card: view ==='card', list: view === 'list'}">
         <button class="btn btn-icon" [ngClass]="{'btn--active': view === 'card'}" (click)="changeView('card')"><span>Cards&nbsp;&nbsp;</span><i class="material-icons">grid_on</i></button>
         <button class="btn btn-icon" [ngClass]="{'btn--active': view === 'list'}" (click)="changeView('list')"><span>List&nbsp;&nbsp;</span><i class="material-icons">view_list</i></button>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard__filters" [@tray] *ngIf="filtersOpen">
+    <div class="dashboard__filters_menu">
+      <div class="grid">
+        <div class="grid__col-sm-4">1</div>
+        <div class="grid__col-sm-4">2</div>
+        <div class="grid__col-sm-4">3</div>
+        <div class="grid__col-sm-12 footer">
+          <button>Action</button>
+        </div>
       </div>
     </div>
   </div>

@@ -6,8 +6,19 @@
   align-items: center;
   display: inline-block;
   padding: 4px 10px;
+  cursor: pointer;
+  user-select: none;
 
   i {
     vertical-align: middle;
+    transition: transform 180ms ease;
+  }
+
+  &--open > i {
+    transform: rotate(180deg);
+  }
+
+  &--open {
+    border-bottom-color: $_color-base-white;
   }
 }

@@ -124,3 +124,42 @@
     margin-right: 0;
   }
 }
+
+.dashboard__filters {
+  box-sizing: content-box;
+
+  @include rem(padding, 0 10px 20px 10px);
+
+  > .dashboard__filters_menu {
+    position: relative;
+    background-color: $_color-base-white;
+    border: 1px solid black;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      background-color: $_color-base-white;
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+
+      @include rem((
+        left: -1px,
+        top: -22px,
+        width: 210px,
+        height: 22px
+      ));
+    }
+  }
+}
+
+.footer {
+  background-color: palette(grey, light);
+
+  > button {
+    align-self: flex-end;
+    text-transform: uppercase;
+
+    @include rem(padding, 10px 20px);
+  }
+}
