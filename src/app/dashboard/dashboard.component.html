@@ -27,17 +27,19 @@
             <div class="ellipse" >Date: {{card.date}}</div>
           </div>
         </div>
-        <div [@slide] class="card__summary middle" *ngIf="view === 'list' && (summaryActive && i === activeItemIndex)">
-          {{summaryData.customerName}}
-          <br />
-          Active Summary Index: {{activeSummaryIndex}}
-          <br />
-          Card Index: {{summaryData.cardIndex}}
-          <br />
-          <button (click)="summaryActive = false" style="margin-top: 8px;">Close</button>
+        <div [@listSlide] *ngIf="view === 'list' && (summaryActive && i === activeItemIndex)" class="grid__col-sm-12 content--box grid--list">
+          <div class="card__summary middle">
+            {{summaryData.customerName}}
+            <br />
+            Active Summary Index: {{activeSummaryIndex}}
+            <br />
+            Card Index: {{summaryData.cardIndex}}
+            <br />
+            <button (click)="summaryActive = false" style="margin-top: 8px;">Close</button>
+          </div>
         </div>
       </div>
-      <div [@slide] *ngIf="(i % 3 === 2 || i % 3 !== 2 && l || i === l - 1 || (i !== l && i === data.length - 2)) && (activeSummaryIndex === i && summaryActive) && view === 'card'" class="grid__col-md-12">
+      <div [@slide] *ngIf="(i % 3 === 2 || i % 3 !== 2 && l || i === l - 1 || (i !== l && i === data.length - 2)) && (activeSummaryIndex === i && summaryActive) && view === 'card'" class="grid__col-md-12 content--box">
         <div class="card__summary" [ngClass]="{left: leftArrow, middle: midArrow, right: rightArrow}">
           {{summaryData.customerName}}
           <br />

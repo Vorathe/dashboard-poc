@@ -46,10 +46,6 @@
   &.card--list {
     display: flex;
   }
-
-  &.card--list + .card__summary {
-    @include rem(margin-top, 20px);
-  }
 }
 
 .card__header {
@@ -202,6 +198,10 @@
     display: block;
     font-weight: bold;
   }
+}
+
+.grid--list {
+  @include rem(padding, 20px 0 0 0);
 }
 
 .card__footer {
