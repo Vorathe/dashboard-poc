@@ -20,5 +20,9 @@
 
   &--open {
     border-bottom-color: $_color-base-white;
+
+    > span {
+      color: palette(blue);
+    }
   }
 }
