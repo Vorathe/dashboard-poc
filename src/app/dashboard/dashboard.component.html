@@ -18,7 +18,7 @@
                 <div><small>{{card.businessType}}</small></div>
                 <div><small><strong>{{card.loanAmount}}</strong></small></div>
               </div>
-              <div class="grid__col-sm-6 grid__col--bleed" *ngIf="view === 'list'">
+              <div class="content__pin grid__col-sm-6 grid__col--bleed" *ngIf="view === 'list'">
                 <button class="btn btn--pin" [ngClass]="{pinned: card.pinned}" (click)="togglePin(card, $event)"><i class="material-icons">{{(card.pinned ? 'bookmark' : 'bookmark_border')}}</i></button>
               </div>
             </div>

@@ -19,10 +19,12 @@
 
   .button-group > button {
     background-color: #fff;
-    border: 1px solid #333;
     float: left;
 
-    @include rem(padding, 4px 8px);
+    @include rem((
+      padding: 4px 8px,
+      border-width: 1px
+    ));
 
     &:first-child {
       border-right: 0;
@@ -39,6 +41,8 @@
   border: 1px solid #333;
   cursor: pointer;
 
+  @include rem(border-width, 1px);
+
   &.card--list {
     display: flex;
   }
@@ -51,7 +55,8 @@
 .card__header {
   display: flex;
   background-color: #aeaeae;
-  padding: 8px;
+
+  @include rem(padding, 8px);
 
   > .header__group {
     flex-shrink: 1;
@@ -122,13 +127,15 @@
 }
 
 .card--list > .card__header > .header__group > .header__deal {
-  font-size: 1em;
   flex-grow: 1;
+
+  @include rem(font-size, 14px);
 
   &::before {
     font-weight: bold;
     display: block;
-    margin-bottom: 2px;
+
+    @include rem(margin-bottom, 2px);
   }
 }
 
@@ -144,6 +151,10 @@
     }
   }
 
+  > .content__group > .content__pin {
+    flex: 1;
+  }
+
   .btn--pin {
     align-self: flex-end;
     height: 100%;
@@ -152,7 +163,7 @@
 
 .card--list > .card__content > .content__group > .content__app {
   font-weight: normal;
-  flex-grow: 1;
+  flex: 1;
 
   &::before {
     content: 'Application';
@@ -195,15 +206,21 @@
 
 .card__footer {
   padding: 8px;
-  border-top: 1px dashed #333;
+  border-top: 1px solid #333;
+
+  @include rem(border-width, 1px);
 
   button {
     background-color: #fff;
     border: 1px solid #333;
-    border-radius: 2px;
     vertical-align: middle;
     align-self: flex-end;
     margin: auto 0;
+
+    @include rem((
+      border-width: 1px,
+      border-radius: 2px
+    ));
 
     > i {
       vertical-align: middle;
@@ -221,12 +238,16 @@
   position: relative;
   height: 240px;
 
-  @include rem(padding, 8px);
+  @include rem((
+    padding: 8px,
+    height: 240px,
+    border-width: 1px
+  ));
 
   &::after,
   &::before {
     bottom: 100%;
-    left: 50%;
+    left: 0;
     border: solid transparent;
     content: '';
     height: 0;
@@ -234,6 +255,7 @@
     position: absolute;
     pointer-events: none;
     transition: left 180ms ease-in-out;
+    transform: translate3d(0, 0, 0);
   }
 
   &::after {
@@ -249,8 +271,6 @@
   &::before {
     border-color: rgba(51, 51, 51, 0);
     border-bottom-color: #333;
-    border-width: 17px;
-    margin-left: -17px;
 
     @include rem((
       margin-left: -17px,
@@ -278,6 +298,9 @@
     border: 1px solid #333;
     text-transform: uppercase;
 
-    @include rem(padding, 8px);
+    @include rem((
+      padding: 8px,
+      border-width: 1px
+    ));
   }
 }
