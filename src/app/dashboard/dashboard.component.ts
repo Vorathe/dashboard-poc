@@ -249,6 +249,16 @@ export class DashboardComponent {
       date: moment().format('llll'),
       step: 'Contract',
       pinned: false
+    },
+    {
+      customerName: sillyname(),
+      appStatus: 'Pending',
+      dealId: 30511,
+      businessType: 'Small Business',
+      loanAmount: '$750,000',
+      date: moment().format('llll'),
+      step: 'Contract',
+      pinned: false
     }
   ];
 
@@ -285,6 +295,8 @@ export class DashboardComponent {
         indexArr.push(i);
       } else if (index === i + 1 && index === l) {
         indexArr.push(i + 1);
+      } else if (index === l - 1 && index !== l) {
+        indexArr.push(l);
       }
     }
 

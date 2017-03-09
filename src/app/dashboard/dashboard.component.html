@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="card__footer" *ngIf="view === 'card'">
-            <div class="ellipse" >Date: {{card.date}}</div>
+            <div class="ellipse" >Date: {{card.date}} {{(i % 3 === 2 || i % 3 !== 2 && l || i === l - 1 || (i !== l && i === data.length - 2))}} {{activeSummaryIndex}} {{i}} {{(activeSummaryIndex === i && summaryActive)}}</div>
           </div>
         </div>
         <div [@slide] class="card__summary middle" *ngIf="view === 'list' && (summaryActive && i === activeItemIndex)">
@@ -37,7 +37,7 @@
           <button (click)="summaryActive = false" style="margin-top: 8px;">Close</button>
         </div>
       </div>
-      <div [@slide] *ngIf="(i % 3 === 2 || i % 3 !== 2 && l) && (activeSummaryIndex === i && summaryActive) && view === 'card'" class="grid__col-md-12">
+      <div [@slide] *ngIf="(i % 3 === 2 || i % 3 !== 2 && l || i === l - 1 || (i !== l && i === data.length - 2)) && (activeSummaryIndex === i && summaryActive) && view === 'card'" class="grid__col-md-12">
         <div class="card__summary" [ngClass]="{left: leftArrow, middle: midArrow, right: rightArrow}">
           {{summaryData.customerName}}
           <br />
