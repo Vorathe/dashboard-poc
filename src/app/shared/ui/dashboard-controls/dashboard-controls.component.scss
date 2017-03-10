@@ -81,11 +81,14 @@
     background-color: palette(blue);
     transform: translateX(0);
     transition: all 180ms ease-in-out;
+
+    @include rem(width, 67px);
   }
 
   &.list::before {
     transform: translateX(153%);
-    width: 53px;
+
+    @include rem(width, 53px);
   }
 }
 
@@ -106,13 +109,15 @@
 }
 
 .dashboard__controls_list_view_item {
-  margin-right: 5px;
-
-  @include rem(font-size, 12px);
+  @include rem((
+    font-size: 12px,
+    margin-right: 5px
+  ));
 
   &::before {
     content: '/';
-    margin-right: 5px;
+
+    @include rem(margin-right, 5px);
   }
 
   &:first-child::before {
@@ -145,9 +150,11 @@
 
       @include rem((
         left: -1px,
-        top: -22px,
-        width: 210px,
-        height: 22px
+        top: -23px,
+        height: 23px,
+        border-width: 1px,
+        padding: 0 10px,
+        width: 216px
       ));
     }
   }
@@ -161,5 +168,17 @@
     text-transform: uppercase;
 
     @include rem(padding, 10px 20px);
+  }
+}
+
+.dropdown {
+  @include rem(width, 216px);
+
+  i {
+    float: right;
+  }
+
+  span {
+    vertical-align: middle;
   }
 }

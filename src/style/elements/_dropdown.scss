@@ -4,10 +4,13 @@
   border: 1px solid $_color-base-black;
   color: $_color-base-black;
   align-items: center;
-  display: inline-block;
-  padding: 4px 10px;
   cursor: pointer;
   user-select: none;
+
+  @include rem((
+    padding: 4px 10px,
+    border-width: 1px
+  ));
 
   i {
     vertical-align: middle;
