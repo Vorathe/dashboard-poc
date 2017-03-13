@@ -1,6 +1,7 @@
 import { Component, style, keyframes, animate, transition, trigger } from '@angular/core';
 import * as moment from 'moment';
 let sillyname = require('sillyname');
+let animationTime = 140;
 
 @Component({
   selector: 'cmp-dashboard',
@@ -9,17 +10,17 @@ let sillyname = require('sillyname');
   animations: [
     trigger('slide', [
       transition('void => *', [
-        animate(100,
+        animate(animationTime,
           keyframes([
             style({ opacity: '0', height: '0', padding: '0 0.625rem' }),
-            style({ opacity: '1', height: '*', padding: '0.625rem 0.625rem' })
+            style({ opacity: '1', height: '*', padding: '*' })
           ])
         )
       ]),
       transition('* => void', [
-        animate(100,
+        animate(animationTime,
           keyframes([
-            style({ opacity: '1', height: '*', padding: '0.625rem 0.625rem' }),
+            style({ opacity: '1', height: '*', padding: '*' }),
             style({ opacity: '0', height: '0', padding: '0 0.625rem' })
           ])
         )
@@ -27,17 +28,17 @@ let sillyname = require('sillyname');
     ]),
     trigger('listSlide', [
       transition('void => *', [
-        animate(100,
+        animate(animationTime,
           keyframes([
             style({ opacity: '0', height: '0', padding: '0' }),
-            style({ opacity: '1', height: '*', padding: '20px 0 0 0' })
+            style({ opacity: '1', height: '*', padding: '*' })
           ])
         )
       ]),
       transition('* => void', [
-        animate(100,
+        animate(animationTime,
           keyframes([
-            style({ opacity: '1', height: '*', padding: '20px 0 0 0' }),
+            style({ opacity: '1', height: '*', padding: '*' }),
             style({ opacity: '0', height: '0', padding: '0' })
           ])
         )
@@ -311,12 +312,12 @@ export class DashboardComponent {
   ];
 
   summaryData = {};
-  activeSummaryIndex = 0;
+  activeSummaryIndex: number;
   summaryActive = false;
   leftArrow = false;
   midArrow = false;
   rightArrow = false;
-  activeItemIndex = 0;
+  activeItemIndex: number;
 
   view = 'card';
 
@@ -366,6 +367,14 @@ export class DashboardComponent {
   }
 
   handleViewChange(event) {
-    this.view = event;
+    if (this.summaryActive) {
+      this.summaryActive = false;
+      setTimeout(() => {
+        this.view = event;
+        this.summaryActive = true;
+      }, animationTime + 25);
+    } else {
+      this.view = event;
+    }
   }
 }
