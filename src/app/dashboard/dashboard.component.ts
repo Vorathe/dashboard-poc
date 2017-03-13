@@ -12,14 +12,14 @@ let sillyname = require('sillyname');
         animate(100,
           keyframes([
             style({ opacity: '0', height: '0', padding: '0 0.625rem' }),
-            style({ opacity: '1', height: '15rem', padding: '0.625rem 0.625rem' })
+            style({ opacity: '1', height: '*', padding: '0.625rem 0.625rem' })
           ])
         )
       ]),
       transition('* => void', [
         animate(100,
           keyframes([
-            style({ opacity: '1', height: '15rem', padding: '0.625rem 0.625rem' }),
+            style({ opacity: '1', height: '*', padding: '0.625rem 0.625rem' }),
             style({ opacity: '0', height: '0', padding: '0 0.625rem' })
           ])
         )
@@ -30,14 +30,14 @@ let sillyname = require('sillyname');
         animate(100,
           keyframes([
             style({ opacity: '0', height: '0', padding: '0' }),
-            style({ opacity: '1', height: '15rem', padding: '20px 0 0 0' })
+            style({ opacity: '1', height: '*', padding: '20px 0 0 0' })
           ])
         )
       ]),
       transition('* => void', [
         animate(100,
           keyframes([
-            style({ opacity: '1', height: '15rem', padding: '20px 0 0 0' }),
+            style({ opacity: '1', height: '*', padding: '20px 0 0 0' }),
             style({ opacity: '0', height: '0', padding: '0' })
           ])
         )

@@ -27,7 +27,7 @@
             <div class="ellipse" >Date: {{card.date}}</div>
           </div>
         </div>
-        <!--TODO: Componentize the summary tray -->
+        <!--TODO: Componentize the summary tray, copy paste between card/list for now -->
         <div [@listSlide] *ngIf="view === 'list' && (summaryActive && i === activeItemIndex)" class="grid__col-sm-12 content--box grid--list">
           <div class="card__summary middle">
             <ul class="summary__timeline">
@@ -74,7 +74,87 @@
               <a href=""><i class="material-icons">mail</i>&nbsp;gohuskers_ne@gmail.com</a>
             </div>
           </div>
-          <button (click)="summaryActive = false" style="margin-top: 8px;">Close</button>
+          <div class="card__summary_content">
+            <div class="grid">
+              <div class="grid__col-sm-8">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Qty</th>
+                      <th>Type</th>
+                      <th>Product</th>
+                      <th>SKU / VIN</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>4</td>
+                      <td>5</td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>4</td>
+                      <td>5</td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>4</td>
+                      <td>5</td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>4</td>
+                      <td>5</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="grid__col-md-4">
+                <h3 class="card__summary_content_header">Finance Structure (Desired)</h3>
+                <div class="grid border-box">
+                  <div class="grid__col-sm-6">
+                    <div class="grid__cell">
+                      <label>Down Payment</label>
+                      <div>$0</div>
+                    </div>
+                  </div>
+                  <div class="grid__col-sm-6">
+                    <div class="grid__cell">
+                      <label>Down Payment</label>
+                      <div>$0</div>
+                    </div>
+                  </div>
+                  <div class="grid__col-sm-6">
+                    <div class="grid__cell">
+                      <label>Down Payment</label>
+                      <div>$0</div>
+                    </div>
+                  </div>
+                  <div class="grid__col-sm-6">
+                    <div class="grid__cell">
+                      <label>Down Payment</label>
+                      <div>$0</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card__summary_footer">
+            <button>View Customer Record</button>
+            <button>View Full Deal Details</button>
+            <button (click)="summaryActive = false" class="btn--focus">Recommended Action</button>
+          </div>
         </div>
       </div>
     </ng-container>
