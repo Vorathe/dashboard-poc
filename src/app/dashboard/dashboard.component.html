@@ -31,29 +31,24 @@
         <div [@listSlide] *ngIf="view === 'list' && (summaryActive && i === activeItemIndex)" class="grid__col-sm-12 content--box grid--list">
           <div class="card__summary middle">
             <ul class="summary__timeline">
-              <li class="summary__timeline_item">
+              <li class="summary__timeline_item" *ngFor="let step of steps">
                 <div class="node">
-                  <div class="node__percent"></div>
+                  <div class="node__percent" [ngStyle]="{width: step.percent + '%'}"></div>
                 </div>
-                <div class="node__desc">
-                  <span>Purchase Agreement<i class="material-icons">check</i></span>
-                </div>
-              </li>
-              <li class="summary__timeline_item">
-                <div class="node">
-                  <div class="node__percent"></div>
-                </div>
-                <div class="node__desc">
-                  <span>Purchase Agreement<i class="material-icons">check</i></span>
+                <div class="node__desc ellipse">
+                  <span>{{step.name}}</span>
                 </div>
               </li>
             </ul>
-            {{summaryData.customerName}}
-            <br />
-            Active Summary Index: {{activeSummaryIndex}}
-            <br />
-            Card Index: {{summaryData.cardIndex}}
-            <br />
+            <div class="card__summary_header">
+              <div class="header__customer">
+                {{summaryData.customerName}}
+              </div>
+              <div class="header__group">
+                <a href=""><i class="material-icons">phone</i>&nbsp;(555) 555-5555</a>
+                <a href=""><i class="material-icons">mail</i>&nbsp;gohuskers_ne@gmail.com</a>
+              </div>
+            </div>
             <button (click)="summaryActive = false" style="margin-top: 8px;">Close</button>
           </div>
         </div>
