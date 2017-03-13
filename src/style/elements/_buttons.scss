@@ -17,4 +17,8 @@ button {
 
     @include rem(padding, 8px);
   }
+
+  > button.btn__group--active {
+    background-color: palette(grey);
+  }
 }

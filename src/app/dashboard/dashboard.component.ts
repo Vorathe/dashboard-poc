@@ -279,6 +279,36 @@ export class DashboardComponent {
       pinned: false
     }
   ];
+  steps = [
+    {
+      name: 'Purchase Agreement',
+      percent: 10
+    },
+    {
+      name: 'Credit Application',
+      percent: 20
+    },
+    {
+      name: 'Quote',
+      percent: 30
+    },
+    {
+      name: 'Contract',
+      percent: 40
+    },
+    {
+      name: 'Settlement',
+      percent: 50
+    },
+    {
+      name: 'Lead',
+      percent: 60
+    },
+    {
+      name: 'Lorem Ipsum',
+      percent: 70
+    }
+  ];
 
   summaryData = {};
   activeSummaryIndex = 0;

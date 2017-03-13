@@ -15,12 +15,12 @@
   <div class="dashboard__filters" [@tray] *ngIf="filtersOpen">
     <div class="dashboard__filters_menu">
       <div class="grid">
-        <div class="grid__col-sm-auto dashboard__filters_header grid__col--bleed">
+        <div class="grid__col-xs-auto dashboard__filters_header grid__col--bleed">
           <div class="header_info">
             <h2>Filters</h2>
           </div>
         </div>
-        <div class="grid__col-sm-auto dashboard__filters_header grid__col--bleed">
+        <div class="grid__col-xs-auto dashboard__filters_header grid__col--bleed">
           <div class="header_controls">
             <button (click)="filtersOpen = false;">Close<i class="material-icons">close</i></button>
             <div class="field__group">
@@ -58,14 +58,14 @@
             </div>
           </div>
         </div>
-        <div class="grid__col-sm-auto grid__col--bleed-y">
+        <div class="grid__col-xs-auto grid__col--bleed-y">
           <h3>Group by</h3>
           <div class="grid__cell">
             <div class="btn__group">
               <button>Dealership</button>
               <button>Deal Stage</button>
               <button>Deal Activity</button>
-              <button>Don't Group</button>
+              <button class="btn__group--active">Don't Group</button>
             </div>
           </div>
           <h3>Sort by</h3>
