@@ -1,0 +1,23 @@
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+th,
+td {
+  vertical-align: middle;
+
+  &:last-child {
+    text-align: right;
+  }
+
+  @include rem(padding, 10px 0);
+}
+
+tr {
+  border-bottom: 1px solid $_color-base-black;
+}
