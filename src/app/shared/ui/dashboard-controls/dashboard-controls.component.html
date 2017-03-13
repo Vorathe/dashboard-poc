@@ -15,11 +15,67 @@
   <div class="dashboard__filters" [@tray] *ngIf="filtersOpen">
     <div class="dashboard__filters_menu">
       <div class="grid">
-        <div class="grid__col-sm-4">1</div>
-        <div class="grid__col-sm-4">2</div>
-        <div class="grid__col-sm-4">3</div>
-        <div class="grid__col-sm-12 footer">
-          <button>Action</button>
+        <div class="grid__col-sm-auto dashboard__filters_header grid__col--bleed">
+          <div class="header_info">
+            <h2>Filters</h2>
+          </div>
+        </div>
+        <div class="grid__col-sm-auto dashboard__filters_header grid__col--bleed">
+          <div class="header_controls">
+            <button (click)="filtersOpen = false;">Close<i class="material-icons">close</i></button>
+            <div class="field__group">
+              <label for="default">Save as default</label>
+              <input type="checkbox" id="default">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid dashboard__filters_content">
+        <div class="grid__col-sm-auto grid__col--bleed-y">
+          <h3>Dealerships</h3>
+          <div class="grid__cell">
+            <div class="field__group" *ngFor="let dealer of dealers">
+              <input type="checkbox" [attr.id]="dealer.value">
+              <label [attr.for]="dealer.value">{{dealer.name}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="grid__col-sm-auto grid__col--bleed-y">
+          <h3>Deal Stage</h3>
+          <div class="grid__cell">
+            <div class="field__group" *ngFor="let stage of stages">
+              <input type="checkbox" [attr.id]="stage.value">
+              <label [attr.for]="stage.value">{{stage.name}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="grid__col-sm-auto grid__col--bleed-y">
+          <h3>Recent Deals</h3>
+          <div class="grid__cell">
+            <div class="field__group" *ngFor="let recent of recents">
+              <input type="checkbox" [attr.id]="recent.value">
+              <label [attr.for]="recent.value">{{recent.name}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="grid__col-sm-auto grid__col--bleed-y">
+          <h3>Group by</h3>
+          <div class="grid__cell">
+            <div class="btn__group">
+              <button>Dealership</button>
+              <button>Deal Stage</button>
+              <button>Deal Activity</button>
+              <button>Don't Group</button>
+            </div>
+          </div>
+          <h3>Sort by</h3>
+          <div class="grid__cell">
+            <div class="btn__group">
+              <button>Alphabetical</button>
+              <button>Newest</button>
+              <button>Deal Amount</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

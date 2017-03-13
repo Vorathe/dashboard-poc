@@ -4,3 +4,17 @@ button {
   color: $_color_base-black;
   display: inline-block;
 }
+
+.btn__group {
+  display: flex;
+  align-items: center;
+  border-left: 1px solid $_color-base-black;
+  white-space: nowrap;
+
+  > button {
+    border-left: 0;
+    white-space: nowrap;
+
+    @include rem(padding, 8px);
+  }
+}
