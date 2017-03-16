@@ -13,7 +13,8 @@ import {
   SearchComponent,
   SearchTrayComponent,
   NotificationsComponent,
-  NotifyTrayComponent
+  NotifyTrayComponent,
+  CreditAppComponent
 } from './shared/ui';
 
 import { WindowRefService } from './shared/services';
@@ -39,7 +40,8 @@ import { routing } from './app.routing';
     SearchComponent,
     SearchTrayComponent,
     NotificationsComponent,
-    NotifyTrayComponent
+    NotifyTrayComponent,
+    CreditAppComponent
   ],
   providers: [WindowRefService],
   bootstrap: [AppComponent]

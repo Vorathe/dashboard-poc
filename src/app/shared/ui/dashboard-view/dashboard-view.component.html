@@ -14,6 +14,15 @@
         </li>
       </ul>
     </div>
+    <div class="dropdown" (click)="openCreate($event)" [ngClass]="{'dropdown--open': createOpen}">
+      <span>Create New...</span>
+      <i class="material-icons">keyboard_arrow_down</i>
+      <ul class="dropdown__menu" [@slide] *ngIf="createOpen">
+        <li class="dropdown__menu_item">
+          Credit Application
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
