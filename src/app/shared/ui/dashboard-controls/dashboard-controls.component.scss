@@ -243,14 +243,13 @@
 }
 
 .dropdown {
+  display: flex;
+  align-items: center;
+
   @include rem(width, 216px);
 
-  i {
-    float: right;
-  }
-
   span {
-    vertical-align: middle;
+    flex: 1;
   }
 }
 
