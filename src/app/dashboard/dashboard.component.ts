@@ -385,7 +385,7 @@ export class DashboardComponent {
   }
 
   handleViewChange(event) {
-    if (this.summaryActive && event != this.view) {
+    if (this.summaryActive && event !== this.view) {
       this.summaryActive = false;
       setTimeout(() => {
         this.view = event;
