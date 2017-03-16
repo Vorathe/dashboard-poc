@@ -12,7 +12,7 @@
 .dashboard__view {
   color: #000;
   display: flex;
-  align-items: center;
+  align-items: baseline;
 
   @include rem(padding, 0 10px);
 }
@@ -27,9 +27,14 @@
 .dashboard__view_nav {
   flex-grow: 1;
 
+  > ul {
+    display: flex;
+  }
+
   > ul > li {
     display: inline-block;
     border-bottom: 2px solid transparent;
+    border-top: 2px solid transparent;
 
     @include rem(padding, 20px);
   }
