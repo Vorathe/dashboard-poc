@@ -43,7 +43,7 @@
   &__menu > li {
     border-top: 1px solid $_color-base-black;
     background-color: inherit;
-    transition: background-color 140ms linear;
+    transition: background-color, color 140ms ease;
 
     @include rem((
       padding: 4px 10px,
@@ -51,6 +51,7 @@
     ));
 
     &:hover {
+      color: $_color-base-white;
       background-color: palette(blue, lighter);
     }
   }

@@ -1,1 +1,19 @@
-credit app
+<div [@slideUp] *ngIf="creditAppOpen" class="application__wrapper">
+  <div class="content__grid content__grid--application">
+    <div class="application">
+      <div class="grid application__header">
+        <div class="grid__col-sm-auto">
+          <h2>Credit Application</h2>
+        </div>
+        <div class="grid__col-sm-auto grid--align-end">
+          <button (click)="closeCreditApp()">
+            <i class="material-icons">close</i>
+          </button>
+        </div>
+      </div>
+      <div class="application__footer">
+        footer
+      </div>
+    </div>
+  </div>
+</div>

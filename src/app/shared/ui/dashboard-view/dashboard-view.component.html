@@ -18,7 +18,7 @@
       <span>Create New...</span>
       <i class="material-icons">keyboard_arrow_down</i>
       <ul class="dropdown__menu" [@slide] *ngIf="createOpen">
-        <li class="dropdown__menu_item">
+        <li class="dropdown__menu_item" (click)="openCreditApp()">
           Credit Application
         </li>
       </ul>

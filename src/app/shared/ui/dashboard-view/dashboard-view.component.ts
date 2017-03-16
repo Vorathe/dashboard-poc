@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CreditAppStateService } from '../../services';
 import { SlideAnimation } from '../animations/global';
 
 @Component({
@@ -10,11 +11,14 @@ import { SlideAnimation } from '../animations/global';
 
 export class DashboardViewComponent {
   createOpen = false;
-  constructor() { }
+  constructor(private _creditAppState: CreditAppStateService) { }
 
   openCreate(event) {
     this.createOpen = !this.createOpen;
-
     event.preventDefault();
+  }
+
+  openCreditApp() {
+    this._creditAppState.emitChange(true);
   }
 }

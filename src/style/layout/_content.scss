@@ -16,8 +16,16 @@
   @include rem(padding, 10px);
   @include rem(max-width, 1600px);
 
-  &-white {
+  &--white {
     background-color: $_color-base-white;
+  }
+
+  &--application {
+    position: relative;
+    background-color: $_color-base-white;
+    height: 100%;
+    padding: 0;
+    overflow: auto;
   }
 }
 

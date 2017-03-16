@@ -17,7 +17,10 @@ import {
   CreditAppComponent
 } from './shared/ui';
 
-import { WindowRefService } from './shared/services';
+import {
+  WindowRefService,
+  CreditAppStateService
+} from './shared/services';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 
@@ -43,7 +46,10 @@ import { routing } from './app.routing';
     NotifyTrayComponent,
     CreditAppComponent
   ],
-  providers: [WindowRefService],
+  providers: [
+    WindowRefService,
+    CreditAppStateService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

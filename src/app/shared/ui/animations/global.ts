@@ -19,3 +19,22 @@ export const SlideAnimation = trigger('slide', [
     )
   ])
 ]);
+
+export const SlideUpAnimation = trigger('slideUp', [
+  transition('void => *', [
+    animate(animationTime,
+      keyframes([
+        style({ opacity: '0', transform: 'translateY(100%)' }),
+        style({ opacity: '1', transform: 'translateY(0)' })
+      ])
+    )
+  ]),
+  transition('* => void', [
+    animate(animationTime,
+      keyframes([
+        style({ opacity: '1', transform: 'translateY(0)' }),
+        style({ opacity: '0', transform: 'translateY(100%)' })
+      ])
+    )
+  ])
+]);
