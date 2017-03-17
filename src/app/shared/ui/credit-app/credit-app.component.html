@@ -1,5 +1,5 @@
-<div [@slideUp] *ngIf="creditAppOpen" class="application__wrapper">
-  <div class="content__grid content__grid--application">
+<div [@fadeInOut] (@fadeInOut.done)="fadeCallback($event)" *ngIf="creditAppOpen" class="application__wrapper">
+  <div [@slideUp] (@slideUp.done)="slideCallback($event)" *ngIf="slideUpApp" class="content__grid content__grid--application">
     <div class="application">
       <div class="grid application__header">
         <div class="grid__col-sm-auto">

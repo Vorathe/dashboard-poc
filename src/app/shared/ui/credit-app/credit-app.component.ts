@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { CreditAppStateService } from '../../services';
-import { SlideUpAnimation } from '../animations/global';
+import { SlideUpAnimation, FadeInOutAnimation } from '../animations/global';
 
 @Component({
   selector: 'cmp-credit-app',
   templateUrl: './credit-app.component.html',
   styleUrls: ['./credit-app.component.scss'],
-  animations: [ SlideUpAnimation ]
+  animations: [ SlideUpAnimation, FadeInOutAnimation ]
 })
 export class CreditAppComponent {
   creditAppOpen = false;
+  slideUpApp = false;
 
   constructor(private _creditAppState: CreditAppStateService) {
     this._creditAppState.changeEmitted$.subscribe(
@@ -20,7 +21,24 @@ export class CreditAppComponent {
   }
 
   closeCreditApp() {
-    this.creditAppOpen = false;
-    this._creditAppState.emitChange(this.creditAppOpen);
+    this.slideUpApp = false;
   }
+
+  fadeCallback(event) {
+    console.log(event);
+    if (event.fromState === 'void') {
+      this.slideUpApp = true;
+    } else {
+      this.slideUpApp = false;
+    }
+  }
+
+  slideCallback(event) {
+    console.log(event);
+    if (event.toState === 'void') {
+      this.creditAppOpen = false;
+      this._creditAppState.emitChange(this.creditAppOpen);
+    }
+  }
+
 }

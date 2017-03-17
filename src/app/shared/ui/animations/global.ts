@@ -38,3 +38,22 @@ export const SlideUpAnimation = trigger('slideUp', [
     )
   ])
 ]);
+
+export const FadeInOutAnimation = trigger('fadeInOut', [
+  transition('void => *', [
+    animate(animationTime,
+      keyframes([
+        style({ opacity: '0' }),
+        style({ opacity: '1' })
+      ])
+    )
+  ]),
+  transition('* => void', [
+    animate(animationTime,
+      keyframes([
+        style({ opacity: '1' }),
+        style({ opacity: '0' })
+      ])
+    )
+  ])
+]);
