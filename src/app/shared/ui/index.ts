@@ -7,3 +7,4 @@ export { SearchTrayComponent } from './search/search-tray.component';
 export { NotificationsComponent } from './notifications/notifications.component';
 export { NotifyTrayComponent } from './notifications/notifications-tray.component';
 export { CreditAppComponent } from './credit-app/credit-app.component';
+export { SideNavComponent } from './side-nav/side-nav.component';

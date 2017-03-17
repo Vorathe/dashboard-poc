@@ -14,7 +14,8 @@ import {
   SearchTrayComponent,
   NotificationsComponent,
   NotifyTrayComponent,
-  CreditAppComponent
+  CreditAppComponent,
+  SideNavComponent
 } from './shared/ui';
 
 import {
@@ -44,7 +45,8 @@ import { routing } from './app.routing';
     SearchTrayComponent,
     NotificationsComponent,
     NotifyTrayComponent,
-    CreditAppComponent
+    CreditAppComponent,
+    SideNavComponent
   ],
   providers: [
     WindowRefService,

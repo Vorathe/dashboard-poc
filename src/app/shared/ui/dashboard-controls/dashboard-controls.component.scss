@@ -133,9 +133,10 @@
 }
 
 .dashboard__filters {
-  box-sizing: content-box;
-
-  @include rem(padding, 0 10px 20px 10px);
+  @include rem((
+    padding: 0 10px 20px 10px,
+    height: 348px
+  ));
 
   > .dashboard__filters_menu {
     position: relative;
@@ -167,22 +168,15 @@
   align-items: center;
   flex: 1;
 
-  h2 {
-    @include rem(font-size, 16px);
-  }
-
   i {
-    @include rem((
-      margin-right: 5px,
-      font-size: 18px
-    ));
+    @include rem(font-size, 18px);
   }
 }
 
 .dashboard__filters_content {
-  @include rem(margin, 10px 0);
+  @include rem(margin, 20px 10px);
 
-  > .grid__col-sm-auto:nth-of-type(3) {
+  .grid > .grid__col-sm-auto:nth-of-type(3) {
     border-right: 1px solid palette(grey);
   }
 
@@ -222,6 +216,7 @@
   align-items: center;
   flex-direction: row-reverse;
   width: 100%;
+  flex: 1;
 
   > button {
     display: flex;
@@ -255,19 +250,9 @@
   }
 }
 
-.header_info {
-  font-weight: bold;
-
-  @include rem(margin-left, 10px);
-}
-
-.header_controls {
-  @include rem(margin-right, 10px);
-}
-
 .header_info,
 .header_controls {
   border-bottom: 1px solid palette(grey);
 
-  @include rem(padding, 10px 0);
+  @include rem(padding, 20px);
 }

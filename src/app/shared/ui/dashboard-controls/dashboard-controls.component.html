@@ -30,54 +30,57 @@
           </div>
         </div>
       </div>
-      <div class="grid dashboard__filters_content">
-        <div class="grid__col-sm-auto grid__col--bleed-y">
-          <h3>Dealerships</h3>
-          <div class="grid__cell">
-            <div class="field__group" *ngFor="let dealer of dealers">
-              <input type="checkbox" [attr.id]="dealer.value">
-              <label [attr.for]="dealer.value">{{dealer.name}}</label>
+      <div class="dashboard__filters_content">
+        <div class="grid">
+          <div class="grid__col-sm-auto grid__col--bleed-y">
+            <h3>Dealerships</h3>
+            <div class="grid__cell">
+              <div class="field__group" *ngFor="let dealer of dealers">
+                <input type="checkbox" [attr.id]="dealer.value">
+                <label [attr.for]="dealer.value">{{dealer.name}}</label>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="grid__col-sm-auto grid__col--bleed-y">
-          <h3>Deal Stage</h3>
-          <div class="grid__cell">
-            <div class="field__group" *ngFor="let stage of stages">
-              <input type="checkbox" [attr.id]="stage.value">
-              <label [attr.for]="stage.value">{{stage.name}}</label>
+          <div class="grid__col-sm-auto grid__col--bleed-y">
+            <h3>Deal Stage</h3>
+            <div class="grid__cell">
+              <div class="field__group" *ngFor="let stage of stages">
+                <input type="checkbox" [attr.id]="stage.value">
+                <label [attr.for]="stage.value">{{stage.name}}</label>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="grid__col-sm-auto grid__col--bleed-y">
-          <h3>Recent Deals</h3>
-          <div class="grid__cell">
-            <div class="field__group" *ngFor="let recent of recents">
-              <input type="checkbox" [attr.id]="recent.value">
-              <label [attr.for]="recent.value">{{recent.name}}</label>
+          <div class="grid__col-sm-auto grid__col--bleed-y">
+            <h3>Recent Deals</h3>
+            <div class="grid__cell">
+              <div class="field__group" *ngFor="let recent of recents">
+                <input type="checkbox" [attr.id]="recent.value">
+                <label [attr.for]="recent.value">{{recent.name}}</label>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="grid__col-xs-auto grid__col--bleed-y">
-          <h3>Group by</h3>
-          <div class="grid__cell">
-            <div class="btn__group">
-              <button>Dealership</button>
-              <button>Deal Stage</button>
-              <button>Deal Activity</button>
-              <button class="btn__group--active">Don't Group</button>
+          <div class="grid__col-xs-auto grid__col--bleed-y">
+            <h3>Group by</h3>
+            <div class="grid__cell">
+              <div class="btn__group">
+                <button>Dealership</button>
+                <button>Deal Stage</button>
+                <button>Deal Activity</button>
+                <button class="btn__group--active">Don't Group</button>
+              </div>
             </div>
-          </div>
-          <h3>Sort by</h3>
-          <div class="grid__cell">
-            <div class="btn__group">
-              <button>Alphabetical</button>
-              <button>Newest</button>
-              <button>Deal Amount</button>
+            <h3>Sort by</h3>
+            <div class="grid__cell">
+              <div class="btn__group">
+                <button>Alphabetical</button>
+                <button>Newest</button>
+                <button>Deal Amount</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
   <div class="dashboard__controls_list">

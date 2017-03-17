@@ -1,8 +1,10 @@
 // styles in src/style directory are applied to the whole page
 @import './abstracts/functions';
 @import './abstracts/palette';
+@import './abstracts/variables';
 @import './typography/daimler-cs';
 @import './layout/global';
+@import './layout/units';
 @import './layout/grid';
 @import './layout/content';
 @import './layout/util';

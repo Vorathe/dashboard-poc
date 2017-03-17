@@ -20,10 +20,7 @@
 }
 
 .dashboard__view_label {
-  font-weight: bold;
-
   @include rem(margin-right, 20px);
-  @include rem(font-size, 18px);
 }
 
 .dashboard__view_nav {
