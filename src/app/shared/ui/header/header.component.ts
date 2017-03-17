@@ -17,7 +17,7 @@ import { WindowRefService } from '../../services';
         opacity: '1',
         transform: 'translateY(0)',
         height: '*',
-        overflow: 'auto'
+        overflow: 'inherit'
       })),
       transition('hide => show', animate('100ms ease-in')),
       transition('show => hide', animate('100ms ease-out'))
