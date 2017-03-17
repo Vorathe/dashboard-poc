@@ -24,18 +24,16 @@ export class CreditAppComponent {
     this.slideUpApp = false;
   }
 
-  fadeCallback(event) {
-    console.log(event);
-    if (event.fromState === 'void') {
+  fadeCallback(e) {
+    if (e.fromState === 'void') {
       this.slideUpApp = true;
     } else {
       this.slideUpApp = false;
     }
   }
 
-  slideCallback(event) {
-    console.log(event);
-    if (event.toState === 'void') {
+  slideCallback(e) {
+    if (e.toState === 'void') {
       this.creditAppOpen = false;
       this._creditAppState.emitChange(this.creditAppOpen);
     }
