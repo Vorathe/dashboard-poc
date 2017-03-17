@@ -75,20 +75,21 @@
   &::before {
     content: '';
     position: absolute;
-    height: 3px;
     bottom: 0;
-    width: 67px;
     background-color: palette(blue);
     transform: translateX(0);
-    transition: all 180ms ease-in-out;
+    transition: all 140ms ease-in-out;
 
-    @include rem(width, 67px);
+    @include rem((
+      width: 65px,
+      height: 3px
+    ));
   }
 
   &.list::before {
-    transform: translateX(153%);
+    transform: translateX(138%);
 
-    @include rem(width, 53px);
+    @include rem(width, 55px);
   }
 }
 
@@ -100,8 +101,9 @@
 }
 
 .dashboard__controls_list_header {
-  margin-bottom: 5px;
   text-transform: uppercase;
+
+  @include rem(margin-bottom, 5px);
 }
 
 .dashboard__controls_list_view {

@@ -7,6 +7,8 @@
   box-shadow: 0 2px 4px rgba(32, 32, 32, 0.15);
   position: relative;
   z-index: 10;
+
+  @include rem(height, 67px);
 }
 
 .dashboard__view {
