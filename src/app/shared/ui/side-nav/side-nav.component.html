@@ -1,1 +1,13 @@
-<div>side nav</div>
+<h3>Jump To...</h3>
+<ul class="side-nav side-nav--primary">
+  <li class="side-nav__item"
+      *ngFor="let section of sections; let i = index"
+      [ngClass]="{'side-nav__item--active': section.active}"
+      (click)="outputSection(i, section.name)">
+    {{section.name}}
+  </li>
+</ul>
+<h3>Resources</h3>
+<ul class="side-nav side-nav--secondary">
+  <li class="side-nav__item">All Documents</li>
+</ul>

@@ -1,26 +1,51 @@
 <div [@fadeInOut] (@fadeInOut.done)="fadeCallback($event)" *ngIf="creditAppOpen" class="application__wrapper">
   <div [@slideUp] (@slideUp.done)="slideCallback($event)" *ngIf="slideUpApp" class="content__grid content__grid--application">
     <div class="application">
-      <div class="grid application__header">
-        <div class="grid__col-10">
+      <div class="application__group" #tpl>
+        <div class="application__header">
           <h1>Credit Application</h1>
         </div>
-        <div class="grid__col-2 grid--align-end">
-          <button (click)="closeCreditApp()">
-            <i class="material-icons">close</i>
-          </button>
-        </div>
-      </div>
-      <div class="grid">
-        <div class="grid__col-sm-3">
-          <cmp-side-nav></cmp-side-nav>
-        </div>
-        <div class="grid__col-sm-9">
-          8
+        <div class="application__frame">
+          <div class="application__frame_nav">
+            <cmp-side-nav [sections]="sections" (currentSection)="navigateToSection($event)"></cmp-side-nav>
+          </div>
+          <div class="application__frame_content">
+            <div class="grid">
+              <div class="grid__col-12">
+                <div class="application__frame_content_section"
+                     *ngFor="let section of sections"
+                     [attr.id]="section.name">
+                  <div class="accordion">
+                    <div class="accordion__header" (click)="section.open = !section.open" [ngClass]="{'accordion__header--active': section.active, 'accordion__header--open': section.open}">
+                      <div class="accordion__header_name">{{section.name}}</div>
+                      <i class="material-icons">keyboard_arrow_down</i>
+                    </div>
+                    <div class="accordion__content" [@slide] *ngIf="section.open || section.active">
+                      Content
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="application__footer">
-        footer
+        <div class="grid">
+          <div class="grid__col-auto">
+            <div class="application__footer_errors">
+              <input type="checkbox" id="showErrors">
+              <label for="showErrors">Highlight errors</label>
+            </div>
+          </div>
+          <div class="grid__col-auto grid--align-end">
+            <div class="grid__cell">
+              <button class="btn" (click)="closeCreditApp()">Cancel</button>
+              <button class="btn">Save &amp; Close</button>
+              <button class="btn">Submit Application</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

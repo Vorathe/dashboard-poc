@@ -1,16 +1,61 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CreditAppStateService } from '../../services';
-import { SlideUpAnimation, FadeInOutAnimation } from '../animations/global';
+import { SlideUpAnimation, FadeInOutAnimation, SlideAnimation } from '../animations/global';
 
 @Component({
   selector: 'cmp-credit-app',
   templateUrl: './credit-app.component.html',
   styleUrls: ['./credit-app.component.scss'],
-  animations: [ SlideUpAnimation, FadeInOutAnimation ]
+  animations: [ SlideUpAnimation, FadeInOutAnimation, SlideAnimation ]
 })
 export class CreditAppComponent {
+  @ViewChild('tpl') view;
   creditAppOpen = false;
   slideUpApp = false;
+  sections = [
+    {
+      name: 'Setup',
+      active: true,
+      enabled: true,
+      open: true
+    },
+    {
+      name: 'Deal Team',
+      active: false,
+      enabled: false,
+      open: false
+    },
+    {
+      name: 'Applicant',
+      active: false,
+      enabled: false,
+      open: false
+    },
+    {
+      name: 'References',
+      active: false,
+      enabled: false,
+      open: false
+    },
+    {
+      name: 'Guarantors',
+      active: false,
+      enabled: false,
+      open: false
+    },
+    {
+      name: 'Vehicles & Equip',
+      active: false,
+      enabled: false,
+      open: false
+    },
+    {
+      name: 'Finance Structure',
+      active: false,
+      enabled: false,
+      open: false
+    }
+  ];
 
   constructor(private _creditAppState: CreditAppStateService) {
     this._creditAppState.changeEmitted$.subscribe(
@@ -39,4 +84,8 @@ export class CreditAppComponent {
     }
   }
 
+  navigateToSection(e) {
+    let elem = document.getElementById(e);
+    this.view.nativeElement.scrollTop = elem.offsetTop;
+  }
 }

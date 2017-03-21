@@ -1,0 +1,43 @@
+.accordion {
+  border: solid $_color-base-black;
+
+  @include rem(border-width, 1px);
+}
+
+.accordion__header {
+  display: flex;
+  align-items: center;
+
+  @include rem((
+    padding: 10px
+  ));
+
+  &--active {
+    background-color: palette(blue, lightest);
+  }
+}
+
+.accordion__header_name {
+  flex: 1 0 auto;
+
+  + i {
+    flex: 0 1 auto;
+    transition: all 140ms linear;
+  }
+}
+
+.accordion__header--active > .accordion__header_name + i,
+.accordion__header--open > .accordion__header_name + i {
+  transform: rotate(180deg);
+}
+
+.accordion__content {
+  // TODO: Remove when content exists
+  height: 400px;
+  border-top: solid $_color-base-black;
+
+  @include rem((
+    padding: 10px,
+    border-width: 1px
+  ));
+}
