@@ -31,7 +31,6 @@ export class HeaderComponent implements OnInit {
   headerState: string;
   currentScroll: number;
 
-
   constructor(private window: WindowRefService) {
     this._win = this.window.nativeWindow;
     this.currentScroll = this._win.pageYOffset;

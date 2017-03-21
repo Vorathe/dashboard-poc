@@ -102,7 +102,18 @@ module.exports = function makeWebpackConfig() {
       },
 
       // Support for *.json files.
-      {test: /\.json$/, loader: 'json-loader'},
+      {
+        test: /\.json$/,
+        use: 'json-loader'
+      },
+      // {
+      //   test: /\.json$/,
+      //   loader: 'file-loader?name=assets/[name].json'
+      // },
+      // {
+      //   test: /app\/i18n\/.*\.json$/,
+      //   loader: 'file-loader?name=assets/i18n/[name].[ext]'
+      // },
 
       // Support for CSS as raw text
       // use 'null' loader in test mode (https://github.com/webpack/null-loader)
@@ -251,7 +262,11 @@ module.exports = function makeWebpackConfig() {
 
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
       // Minify all javascript, switch loaders to minimizing mode
-      new webpack.optimize.UglifyJsPlugin({sourceMap: true, mangle: { keep_fnames: true }}),
+      new webpack.optimize.UglifyJsPlugin({
+        sourceMap: false,
+        comments: false,
+        // mangle: { keep_fnames: true }
+      }),
 
       // Copy assets from the public folder
       // Reference: https://github.com/kevlened/copy-webpack-plugin

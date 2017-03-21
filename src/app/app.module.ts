@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
+
+const config = require('../config');
 
 import {
   HeaderComponent,
@@ -32,7 +36,14 @@ import { routing } from './app.routing';
     BrowserModule,
     HttpModule,
     FormsModule,
-    routing
+    routing,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [ Http ]
+      }
+    })
   ],
   declarations: [
     AppComponent,
@@ -54,6 +65,11 @@ import { routing } from './app.routing';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
   constructor() {}
+}
+
+export function createTranslateLoader(http: Http) {
+  return new TranslateHttpLoader(http, config.i18n.path, '.json');
 }
