@@ -1,6 +1,6 @@
 <div class="content__full">
   <div class="dashboard__view">
-    <span class="dashboard__view_label">Dashboard</span>
+    <h3 class="dashboard__view_label">Dashboard</h3>
     <div class="dashboard__view_nav">
       <ul>
         <li class="dashboard__view_nav_item--active">
@@ -11,6 +11,15 @@
         </li>
         <li>
           <a href="">All Deals</a>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown" (click)="openCreate($event)" [ngClass]="{'dropdown--open': createOpen}">
+      <span>Create New...</span>
+      <i class="material-icons">keyboard_arrow_down</i>
+      <ul class="dropdown__menu" [@slide] *ngIf="createOpen">
+        <li class="dropdown__menu_item" (click)="openCreditApp()">
+          Credit Application
         </li>
       </ul>
     </div>

@@ -1,0 +1,27 @@
+<div [@fadeInOut] (@fadeInOut.done)="fadeCallback($event)" *ngIf="creditAppOpen" class="application__wrapper">
+  <div [@slideUp] (@slideUp.done)="slideCallback($event)" *ngIf="slideUpApp" class="content__grid content__grid--application">
+    <div class="application">
+      <div class="grid application__header">
+        <div class="grid__col-10">
+          <h1>Credit Application</h1>
+        </div>
+        <div class="grid__col-2 grid--align-end">
+          <button (click)="closeCreditApp()">
+            <i class="material-icons">close</i>
+          </button>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="grid__col-sm-3">
+          <cmp-side-nav></cmp-side-nav>
+        </div>
+        <div class="grid__col-sm-9">
+          8
+        </div>
+      </div>
+      <div class="application__footer">
+        footer
+      </div>
+    </div>
+  </div>
+</div>

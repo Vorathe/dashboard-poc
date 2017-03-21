@@ -10,12 +10,14 @@ import { WindowRefService } from '../../services';
       state('hide', style({
         opacity: '0',
         transform: 'translateY(-100%)',
-        display: 'none'
+        height: '0',
+        overflow: 'hidden'
       })),
       state('show', style({
         opacity: '1',
         transform: 'translateY(0)',
-        display: 'block'
+        height: '*',
+        overflow: 'inherit'
       })),
       transition('hide => show', animate('100ms ease-in')),
       transition('show => hide', animate('100ms ease-out'))

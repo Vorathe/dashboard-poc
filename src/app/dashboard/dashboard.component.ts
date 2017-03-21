@@ -13,14 +13,14 @@ let animationTime = 140;
         animate(animationTime,
           keyframes([
             style({ opacity: '0', height: '0', padding: '0 0.625rem' }),
-            style({ opacity: '1', height: '*', padding: '*' })
+            style({ opacity: '1', height: '*', padding: '0.625rem 0.625rem' })
           ])
         )
       ]),
       transition('* => void', [
         animate(animationTime,
           keyframes([
-            style({ opacity: '1', height: '*', padding: '*' }),
+            style({ opacity: '1', height: '*', padding: '0.625rem 0.625rem' }),
             style({ opacity: '0', height: '0', padding: '0 0.625rem' })
           ])
         )
@@ -31,15 +31,33 @@ let animationTime = 140;
         animate(animationTime,
           keyframes([
             style({ opacity: '0', height: '0', padding: '0' }),
-            style({ opacity: '1', height: '*', padding: '*' })
+            style({ opacity: '1', height: '*', padding: '1.25rem 0 0 0' })
           ])
         )
       ]),
       transition('* => void', [
         animate(animationTime,
           keyframes([
-            style({ opacity: '1', height: '*', padding: '*' }),
+            style({ opacity: '1', height: '*', padding: '1.25rem 0 0 0' }),
             style({ opacity: '0', height: '0', padding: '0' })
+          ])
+        )
+      ])
+    ]),
+    trigger('pinWash', [
+      transition('void => *', [
+        animate(animationTime,
+          keyframes([
+            style({ opacity: '0', transform: 'scale(0)' }),
+            style({ opacity: '1', transform: 'scale(21)' })
+          ])
+        )
+      ]),
+      transition('* => void', [
+        animate(animationTime,
+          keyframes([
+            style({ opacity: '1', transform: 'scale(21)' }),
+            style({ opacity: '0', transform: 'scale(0)' })
           ])
         )
       ])
@@ -367,7 +385,7 @@ export class DashboardComponent {
   }
 
   handleViewChange(event) {
-    if (this.summaryActive) {
+    if (this.summaryActive && event !== this.view) {
       this.summaryActive = false;
       setTimeout(() => {
         this.view = event;

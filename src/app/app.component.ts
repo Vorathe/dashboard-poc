@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
+import { CreditAppStateService } from './shared/services';
 import '../style/app.scss';
 
 @Component({
@@ -7,5 +8,15 @@ import '../style/app.scss';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  @HostBinding('class.open') creditAppOpen: boolean;
+
+  constructor(private _creditAppState: CreditAppStateService) {
+    this._creditAppState.changeEmitted$.subscribe(
+      e => {
+        this.creditAppOpen = e;
+      }
+    );
+  }
+
+
 }

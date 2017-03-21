@@ -3,13 +3,14 @@
   <div class="grid">
     <ng-container *ngFor="let card of data; let i = index; let l = last">
       <div [ngClass]="{'grid__col-xs-4': view === 'card', 'grid__col-sm-12' : view === 'list'}">
-        <div class="card" [ngClass]="{'card--list': view === 'list'}" (click)="getSummary(i)">
+        <div class="card" [ngClass]="{'card--list': view === 'list', 'card--pinned': card.pinned}" (click)="getSummary(i)">
           <div class="card__header" [ngClass]="{'grid__col-sm-auto': view === 'list'}">
             <div class="header__group">
               <div class="header__customer" [ngClass]="{'grid__col-sm-6 grid__col--bleed': view === 'list'}">{{card.customerName}}</div>
               <div class="header__deal" [ngClass]="{'grid__col-sm-6 grid__col--bleed': view === 'list'}">{{card.dealId}}</div>
             </div>
             <button *ngIf="view ==='card'" class="btn btn--pin" [ngClass]="{pinned: card.pinned}" (click)="togglePin(card, $event)"><i class="material-icons">{{(card.pinned ? 'bookmark' : 'bookmark_border')}}</i></button>
+            <div class="pin-wash" [@pinWash] *ngIf="card.pinned" [hidden]="view === 'list'"></div>
           </div>
           <div class="card__content" [ngClass]="{'grid__col-sm-auto': view === 'list'}">
             <div class="content__group">
@@ -240,3 +241,4 @@
     </ng-container>
   </div>
 </div>
+<cmp-credit-app></cmp-credit-app>

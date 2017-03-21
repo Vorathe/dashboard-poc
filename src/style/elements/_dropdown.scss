@@ -6,6 +6,7 @@
   align-items: center;
   cursor: pointer;
   user-select: none;
+  position: relative;
 
   @include rem((
     padding: 4px 10px,
@@ -26,6 +27,32 @@
 
     > span {
       color: palette(blue);
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    left: -1px;
+    right: -1px;
+    top: 100%;
+    background-color: $_color-base-white;
+    border: 1px solid black;
+    border-top: 0;
+  }
+
+  &__menu > li {
+    border-top: 1px solid $_color-base-black;
+    background-color: inherit;
+    transition: background-color, color 140ms ease;
+
+    @include rem((
+      padding: 4px 10px,
+      border-width: 1px
+    ));
+
+    &:hover {
+      color: $_color-base-white;
+      background-color: palette(blue, lighter);
     }
   }
 }
