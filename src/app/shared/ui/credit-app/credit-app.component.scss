@@ -96,3 +96,7 @@
 .application__footer_errors {
   margin: auto 0;
 }
+
+.accordion__content.accordion__content--creditapp {
+  @include rem(padding, 30px);
+}

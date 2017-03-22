@@ -7,7 +7,7 @@
       <div class="application__group" #tpl>
         <div class="application__frame">
           <div class="application__frame_nav">
-            <cmp-side-nav [sections]="sections" (currentSection)="navigateToSection($event)" dirStickyScroller></cmp-side-nav>
+            <cmp-side-nav [sections]="sections" (currentSection)="navigateToSection($event)"></cmp-side-nav>
           </div>
           <div class="application__frame_content">
             <div class="grid">
@@ -20,8 +20,32 @@
                       <div class="accordion__header_name">{{section.name}}</div>
                       <i class="material-icons">keyboard_arrow_down</i>
                     </div>
-                    <div class="accordion__content" [@slide] *ngIf="section.open || section.active">
-                      Content
+                    <div class="accordion__content accordion__content--creditapp" [@slide] *ngIf="section.open || section.active">
+                      <fieldset *ngIf="section.name === 'Setup'">
+                        <div class="field-group">
+                          <label class="required">Is this an application for a business or individual?</label>
+                          <div class="field-group__item_radio field-group__item--inset">
+                            <input type="radio" name="types" id="typeBusiness">
+                            <label for="typeBusiness">Business</label>
+                          </div>
+                          <div class="field-group__item_radio field-group__item--inset">
+                            <input type="radio" name="types" id="typeIndividual">
+                            <label for="typeIndividual">Individual</label>
+                          </div>
+                        </div>
+                        <div class="field-group">
+                          <label class="required" for="saleAmount">What's the Total Estimated Sales Amount of this deal?</label>
+                          <div class="field-group__item_currency field-group__item--inset">
+                              <input type="text" id="saleAmount">
+                          </div>
+                        </div>
+                        <div class="field-group">
+                          <label class="required" for="fein">What's the Federal Employer ID Number (FEIN) of this customer?</label>
+                          <div class="field-group__item_text field-group__item--inset">
+                            <input type="text" id="fein">
+                          </div>
+                        </div>
+                      </fieldset>
                     </div>
                   </div>
                 </div>

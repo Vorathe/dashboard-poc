@@ -23,7 +23,7 @@
         <div class="grid__col-xs-auto dashboard__filters_header grid__col--bleed">
           <div class="header_controls">
             <button (click)="filtersOpen = false;">Close<i class="material-icons">close</i></button>
-            <div class="field__group">
+            <div class="field-group">
               <label for="default">Save as default</label>
               <input type="checkbox" id="default">
             </div>
@@ -35,7 +35,7 @@
           <div class="grid__col-sm-auto grid__col--bleed-y">
             <h3>Dealerships</h3>
             <div class="grid__cell">
-              <div class="field__group" *ngFor="let dealer of dealers">
+              <div class="field-group" *ngFor="let dealer of dealers">
                 <input type="checkbox" [attr.id]="dealer.value">
                 <label [attr.for]="dealer.value">{{dealer.name}}</label>
               </div>
@@ -44,7 +44,7 @@
           <div class="grid__col-sm-auto grid__col--bleed-y">
             <h3>Deal Stage</h3>
             <div class="grid__cell">
-              <div class="field__group" *ngFor="let stage of stages">
+              <div class="field-group" *ngFor="let stage of stages">
                 <input type="checkbox" [attr.id]="stage.value">
                 <label [attr.for]="stage.value">{{stage.name}}</label>
               </div>
@@ -53,7 +53,7 @@
           <div class="grid__col-sm-auto grid__col--bleed-y">
             <h3>Recent Deals</h3>
             <div class="grid__cell">
-              <div class="field__group" *ngFor="let recent of recents">
+              <div class="field-group" *ngFor="let recent of recents">
                 <input type="checkbox" [attr.id]="recent.value">
                 <label [attr.for]="recent.value">{{recent.name}}</label>
               </div>
