@@ -1,13 +1,13 @@
 <div [@fadeInOut] (@fadeInOut.done)="fadeCallback($event)" *ngIf="creditAppOpen" class="application__wrapper">
   <div [@slideUp] (@slideUp.done)="slideCallback($event)" *ngIf="slideUpApp" class="content__grid content__grid--application">
     <div class="application">
+      <div class="application__header">
+        <h1>Credit Application</h1>
+      </div>
       <div class="application__group" #tpl>
-        <div class="application__header">
-          <h1>Credit Application</h1>
-        </div>
         <div class="application__frame">
           <div class="application__frame_nav">
-            <cmp-side-nav [sections]="sections" (currentSection)="navigateToSection($event)"></cmp-side-nav>
+            <cmp-side-nav [sections]="sections" (currentSection)="navigateToSection($event)" dirStickyScroller></cmp-side-nav>
           </div>
           <div class="application__frame_content">
             <div class="grid">

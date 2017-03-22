@@ -8,3 +8,4 @@ export { NotificationsComponent } from './notifications/notifications.component'
 export { NotifyTrayComponent } from './notifications/notifications-tray.component';
 export { CreditAppComponent } from './credit-app/credit-app.component';
 export { SideNavComponent } from './side-nav/side-nav.component';
+export { StickyScrollerDirective } from './directives/sticky-scroller.directive';

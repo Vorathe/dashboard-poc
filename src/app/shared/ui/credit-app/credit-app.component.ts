@@ -17,7 +17,7 @@ export class CreditAppComponent {
       name: 'Setup',
       active: true,
       enabled: true,
-      open: true
+      open: false
     },
     {
       name: 'Deal Team',

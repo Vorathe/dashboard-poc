@@ -65,10 +65,12 @@
 .application__frame {
   display: flex;
 
-  @include rem(padding, 20px 0 20px 20px);
+  @include rem(padding, 20px 10px 20px 20px);
 }
 
 .application__frame_nav {
+  position: relative;
+
   @include rem((
     width: 250px,
     padding-right: 10px

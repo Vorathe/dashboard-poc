@@ -19,7 +19,8 @@ import {
   NotificationsComponent,
   NotifyTrayComponent,
   CreditAppComponent,
-  SideNavComponent
+  SideNavComponent,
+  StickyScrollerDirective
 } from './shared/ui';
 
 import {
@@ -57,7 +58,8 @@ import { routing } from './app.routing';
     NotificationsComponent,
     NotifyTrayComponent,
     CreditAppComponent,
-    SideNavComponent
+    SideNavComponent,
+    StickyScrollerDirective
   ],
   providers: [
     WindowRefService,

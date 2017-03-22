@@ -3,6 +3,10 @@
 
 :host {
   display: block;
+  position: fixed;
+  top: auto;
+
+  @include rem(width, 250px);
 }
 
 h3 {
@@ -20,6 +24,7 @@ h3 {
 .side-nav__item {
   border: 1px solid $_color-base-black;
   position: relative;
+  cursor: pointer;
 
   @include rem((
     padding: 10px,
@@ -68,12 +73,12 @@ h3 {
       ));
     }
   }
+
+  &:hover {
+    color: palette(blue);
+  }
 }
 
-.arrow {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 50px 0 50px 86.6px;
-  border-color: transparent transparent transparent #007bff;
+.side-nav__item.side-nav__item--active:hover {
+  color: $_color-base-black;
 }
