@@ -17,13 +17,13 @@ export class CreditAppComponent {
       name: 'Setup',
       active: true,
       enabled: true,
-      open: false
+      open: true
     },
     {
       name: 'Deal Team',
       active: false,
-      enabled: false,
-      open: false
+      enabled: true,
+      open: true
     },
     {
       name: 'Applicant',
@@ -87,5 +87,14 @@ export class CreditAppComponent {
   navigateToSection(e) {
     let elem = document.getElementById(e);
     this.view.nativeElement.scrollTop = elem.offsetTop;
+  }
+
+  openAccordion(i) {
+    if (this.sections[i].enabled) {
+      this.sections[i].open = !this.sections[i].open;
+    } else {
+      console.log('Section disabled');
+    }
+
   }
 }

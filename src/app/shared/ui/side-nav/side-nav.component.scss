@@ -79,6 +79,12 @@ h3 {
   }
 }
 
+.side-nav__item.side-nav__item--disabled {
+  background-color: palette(gray, light);
+  color: palette(black, lightest);
+  cursor: not-allowed;
+}
+
 .side-nav__item.side-nav__item--active:hover {
   color: $_color-base-black;
 }

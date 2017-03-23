@@ -2,7 +2,7 @@
 <ul class="side-nav side-nav--primary">
   <li class="side-nav__item"
       *ngFor="let section of sections; let i = index"
-      [ngClass]="{'side-nav__item--active': section.active}"
+      [ngClass]="{'side-nav__item--active': section.active, 'side-nav__item--disabled': !section.enabled}"
       (click)="outputSection(i, section.name)">
     {{section.name}}
   </li>

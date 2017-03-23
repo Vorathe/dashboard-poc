@@ -13,10 +13,13 @@
             <div class="grid">
               <div class="grid__col-12">
                 <div class="application__frame_content_section"
-                     *ngFor="let section of sections"
+                     *ngFor="let section of sections; let i = index;"
                      [attr.id]="section.name">
                   <div class="accordion">
-                    <div class="accordion__header" (click)="section.open = !section.open" [ngClass]="{'accordion__header--active': section.active, 'accordion__header--open': section.open}">
+                    <div class="accordion__header"
+                         (click)="openAccordion(i)"
+                         [ngClass]="{'accordion__header--active': section.active, 'accordion__header--open': section.open,
+                         'accordion__header--disabled': !section.enabled}">
                       <div class="accordion__header_name">{{section.name}}</div>
                       <i class="material-icons">keyboard_arrow_down</i>
                     </div>

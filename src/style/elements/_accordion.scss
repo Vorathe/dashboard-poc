@@ -26,6 +26,16 @@
   color: $_color-base-black;
 }
 
+.accordion__header--disabled {
+  background-color: palette(gray, light);
+  color: palette(black, lightest);
+  cursor: not-allowed;
+
+  &:hover .accordion__header_name {
+    color: palette(black, lightest);
+  }
+}
+
 .accordion__header_name {
   flex: 1 0 auto;
 
