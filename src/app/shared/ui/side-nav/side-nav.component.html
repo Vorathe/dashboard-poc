@@ -4,6 +4,7 @@
       *ngFor="let section of sections; let i = index"
       [ngClass]="{'side-nav__item--active': section.active, 'side-nav__item--disabled': !section.enabled}"
       (click)="outputSection(i, section.name)">
+    <i class="material-icons">{{section.active ? 'hourglass_empty' : ''}}{{!section.enabled ? 'lock_outline' : ''}}</i>
     {{section.name}}
   </li>
 </ul>

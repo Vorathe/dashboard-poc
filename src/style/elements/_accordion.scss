@@ -5,9 +5,11 @@
 }
 
 .accordion__header {
-  display: flex;
   align-items: center;
   cursor: pointer;
+  display: flex;
+  background-color: transparent;
+  transition: background-color 140ms ease;
 
   @include rem((
     padding: 10px
@@ -37,16 +39,34 @@
 }
 
 .accordion__header_name {
+  display: flex;
+  align-items: center;
   flex: 1 0 auto;
 
-  + i {
-    flex: 0 1 auto;
+  i {
     transition: all 140ms linear;
   }
 }
 
-.accordion__header--active > .accordion__header_name + i,
-.accordion__header--open > .accordion__header_name + i {
+.accordion__header_name i,
+.accordion__header_status i {
+  @include rem(margin-right, 10px);
+}
+
+.accordion__header_status {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+
+  @include rem(margin-right, 10px);
+}
+
+.accordion__header--active .accordion__header_name {
+  font-weight: 600;
+}
+
+.accordion__header--active > .accordion__header_name i,
+.accordion__header--open > .accordion__header_name i {
   transform: rotate(180deg);
 }
 

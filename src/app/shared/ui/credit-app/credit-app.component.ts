@@ -56,6 +56,7 @@ export class CreditAppComponent {
       open: false
     }
   ];
+  animationTime: number;
 
   constructor(private _creditAppState: CreditAppStateService) {
     this._creditAppState.changeEmitted$.subscribe(
@@ -78,15 +79,20 @@ export class CreditAppComponent {
   }
 
   slideCallback(e) {
+    this.animationTime = e.totalTime;
     if (e.toState === 'void') {
+      console.log(e);
       this.creditAppOpen = false;
       this._creditAppState.emitChange(this.creditAppOpen);
     }
   }
 
+  // TODO: Probably a more elegant way to get animation timing, perhaps requestAnimationFrame.
   navigateToSection(e) {
     let elem = document.getElementById(e);
-    this.view.nativeElement.scrollTop = elem.offsetTop;
+    setTimeout(() => {
+      this.view.nativeElement.scrollTop = elem.offsetTop;
+    }, this.animationTime || 140);
   }
 
   openAccordion(i) {
