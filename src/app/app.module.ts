@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, Http } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
+import { APP_CONFIG, AppConfig } from './app.config';
 
 const config = require('../config');
 
@@ -25,10 +26,12 @@ import {
 
 import {
   WindowRefService,
-  CreditAppStateService
+  CreditAppStateService,
+  LoginService
 } from './shared/services';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 
 import { routing } from './app.routing';
 
@@ -37,6 +40,7 @@ import { routing } from './app.routing';
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     routing,
     TranslateModule.forRoot({
       loader: {
@@ -53,6 +57,7 @@ import { routing } from './app.routing';
     DashboardComponent,
     DashboardViewComponent,
     DashboardControlsComponent,
+    LoginComponent,
     SearchComponent,
     SearchTrayComponent,
     NotificationsComponent,
@@ -61,9 +66,12 @@ import { routing } from './app.routing';
     SideNavComponent,
     StickyScrollerDirective
   ],
+  entryComponents: [ HeaderComponent ],
   providers: [
     WindowRefService,
-    CreditAppStateService
+    CreditAppStateService,
+    LoginService,
+    { provide: APP_CONFIG, useValue: AppConfig }
   ],
   bootstrap: [AppComponent]
 })
