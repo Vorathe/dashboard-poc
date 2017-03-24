@@ -1,0 +1,57 @@
+@import '../../style/abstracts/palette';
+
+input {
+  padding: 0 0.5em;
+  font-size: 1rem;
+  margin-bottom: 1.25em;
+  background-color: darken($_color-base-white, 1%);
+  border: 1px solid darken($_color-base-white, 20%);
+}
+
+input,
+button {
+  min-height: 36px;
+  width: 100%;
+}
+
+label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-bottom: 0.875em;
+  display: block;
+  font-weight: 700;
+}
+
+h2 {
+  margin-bottom: 1.25em;
+}
+
+button {
+  background-color: $_color-base-blue;
+  padding: 0 1em;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: $_color-base-white;
+  font-weight: 700;
+  transition: all linear 0.2s;
+  border: 0;
+  cursor: pointer;
+
+  &:disabled {
+    color: darken($_color-base-white, 10%);
+    cursor: not-allowed;
+    border-color: lighten($_color-base-blue, 10%);
+  }
+}
+
+.login-wrapper {
+  background-color: $_color-base-white;
+  padding: 1.25em;
+  margin-top: 20%;
+  border: 1px solid $_color-base-grey;
+  border-radius: 3px;
+
+  .error {
+    margin-bottom: 1.25rem;
+  }
+}
