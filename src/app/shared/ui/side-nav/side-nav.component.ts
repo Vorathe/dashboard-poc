@@ -12,12 +12,16 @@ export class SideNavComponent {
   constructor() { }
 
   outputSection(index, section) {
-    for ( let i = 0; i < this.sections.length; i++ ) {
-      if (index !== i) {
-        this.sections[i].active = false;
+    if (this.sections[index].enabled) {
+      for ( let i = 0; i < this.sections.length; i++ ) {
+        if (index !== i) {
+          this.sections[i].active = false;
+        }
       }
+      this.sections[index].active = true;
+      this.currentSection.emit(section);
+    } else {
+      console.log('Section disabled');
     }
-    this.sections[index].active = true;
-    this.currentSection.emit(section);
   }
 }

@@ -1,0 +1,64 @@
+.field-group {
+  @include rem(margin-bottom, 10px);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  label {
+    display: block;
+    font-weight: 500;
+
+    @include rem((
+      margin-bottom: 5px,
+      font-size: 16px
+    ));
+  }
+
+  input + label {
+    display: inline;
+    margin-bottom: 0;
+    font-weight: 400;
+
+    @include rem(font-size, 14px);
+  }
+
+  label.required {
+    position: relative;
+
+    @include rem(padding-left, 20px);
+  }
+
+  label.required::before {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-36%);
+    content: '*';
+    color: palette(red, err);
+
+    @include rem(font-size, 20px);
+  }
+}
+
+.field-group__item--inset {
+  @include rem(margin-left, 30px);
+}
+
+.field-group__item_radio {
+  display: flex;
+  align-items: center;
+
+  input {
+    @include rem(margin, 0 5px 0 0);
+  }
+}
+
+// TODO: Temp just for credit app until vd
+.accordion__content--creditapp input[type=text] {
+  @include rem(padding, 8px 10px);
+}
+
+.accordion__content--creditapp .field-group {
+  @include rem(margin-bottom, 30px);
+}
