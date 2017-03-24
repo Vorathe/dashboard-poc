@@ -1,4 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { SetupForm } from '../../interfaces';
 import { CreditAppStateService } from '../../services';
 import { SlideUpAnimation, FadeInOutAnimation, SlideAnimation } from '../animations/global';
 
@@ -8,7 +10,7 @@ import { SlideUpAnimation, FadeInOutAnimation, SlideAnimation } from '../animati
   styleUrls: ['./credit-app.component.scss'],
   animations: [ SlideUpAnimation, FadeInOutAnimation, SlideAnimation ]
 })
-export class CreditAppComponent {
+export class CreditAppComponent implements OnInit {
   @ViewChild('tpl') view;
   creditAppOpen = false;
   slideUpApp = false;
@@ -58,7 +60,10 @@ export class CreditAppComponent {
   ];
   animationTime: number;
 
-  constructor(private _creditAppState: CreditAppStateService) {
+  public setupForm: FormGroup;
+  public submitted = false;
+
+  constructor(private _creditAppState: CreditAppStateService, private _fb: FormBuilder) {
     this._creditAppState.changeEmitted$.subscribe(
       e => {
         this.creditAppOpen = e;
@@ -101,6 +106,57 @@ export class CreditAppComponent {
     } else {
       console.log('Section disabled');
     }
+  }
 
+  ngOnInit() {
+    this.setupForm = this._fb.group({
+      conditional: this._fb.group({
+        applicationType: ['business'],
+        fein: ['', Validators.required]
+      }),
+      saleAmount: ['', Validators.required]
+    });
+
+    this.subcribeToSetupFormChanges();
+  }
+
+  subcribeToSetupFormChanges() {
+    const myFormValueChanges$ = this.setupForm.valueChanges;
+
+    myFormValueChanges$.subscribe(x => {
+      let ssnFieldExists = (<FormGroup>(<FormGroup>this.setupForm).controls['conditional'])
+        .contains('ssn');
+      let feinFieldExists = (<FormGroup>(<FormGroup>this.setupForm).controls['conditional'])
+        .contains('fein');
+
+      if (x.conditional.applicationType === 'business' && !feinFieldExists) {
+        this.addConditionalField('fein');
+
+        if (ssnFieldExists) {
+          this.removeConditionalField('ssn');
+        }
+      } else if (x.conditional.applicationType === 'individual' && !ssnFieldExists) {
+        this.addConditionalField('ssn');
+
+        if (feinFieldExists) {
+          this.removeConditionalField('fein');
+        }
+      }
+    });
+  }
+
+  addConditionalField(field) {
+    (<FormGroup>(<FormGroup>this.setupForm).controls['conditional'])
+      .addControl(field, new FormControl('', Validators.required));
+  }
+
+  removeConditionalField(field) {
+    (<FormGroup>(<FormGroup>this.setupForm).controls['conditional'])
+      .removeControl(field);
+  }
+
+  save(model: SetupForm, isValid: boolean) {
+    this.submitted = true;
+    console.log(model, isValid);
   }
 }

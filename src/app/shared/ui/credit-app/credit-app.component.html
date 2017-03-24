@@ -1,84 +1,95 @@
 <div [@fadeInOut] (@fadeInOut.done)="fadeCallback($event)" *ngIf="creditAppOpen" class="application__wrapper">
   <div [@slideUp] (@slideUp.done)="slideCallback($event)" *ngIf="slideUpApp" class="content__grid content__grid--application">
     <div class="application">
-      <div class="application__header">
-        <h1>Credit Application</h1>
-      </div>
-      <div class="application__group" #tpl>
-        <div class="application__frame">
-          <div class="application__frame_nav">
-            <cmp-side-nav [sections]="sections" (currentSection)="navigateToSection($event)"></cmp-side-nav>
-          </div>
-          <div class="application__frame_content">
-            <div class="grid">
-              <div class="grid__col-12">
-                <div class="application__frame_content_section"
-                     *ngFor="let section of sections; let i = index;"
-                     [attr.id]="section.name">
-                  <div class="accordion">
-                    <div class="accordion__header"
-                         (click)="openAccordion(i)"
-                         [ngClass]="{'accordion__header--active': section.active, 'accordion__header--open': section.open,
-                         'accordion__header--disabled': !section.enabled}">
-                      <div class="accordion__header_name">
-                        <i class="material-icons">{{section.enabled ? 'keyboard_arrow_down' : 'lock_outline'}}</i>
-                        {{section.name}}
+      <form [formGroup]="setupForm" novalidate (ngSubmit)="save(setupForm.value, setupForm.valid)">
+        <div class="application__header">
+          <h1>Credit Application</h1>
+        </div>
+        <div class="application__group" #tpl>
+          <div class="application__frame">
+            <div class="application__frame_nav">
+              <cmp-side-nav [sections]="sections" (currentSection)="navigateToSection($event)"></cmp-side-nav>
+            </div>
+            <div class="application__frame_content">
+
+                <div class="grid">
+                  <div class="grid__col-12">
+                    <div class="application__frame_content_section"
+                         *ngFor="let section of sections; let i = index;"
+                         [attr.id]="section.name">
+                      <div class="accordion">
+                        <div class="accordion__header"
+                             (click)="openAccordion(i)"
+                             [ngClass]="{'accordion__header--active': section.active, 'accordion__header--open': section.open,
+                             'accordion__header--disabled': !section.enabled}">
+                          <div class="accordion__header_name">
+                            <i class="material-icons">{{section.enabled ? 'keyboard_arrow_down' : 'lock_outline'}}</i>
+                            {{section.name}}
+                          </div>
+                          <div class="accordion__header_status" *ngIf="section.active">
+                            <i class="material-icons">hourglass_empty</i>In Progress
+                          </div>
+                        </div>
+                        <div class="accordion__content accordion__content--creditapp" [@slide] *ngIf="section.open || section.active">
+                          <!-- TODO: Create form templates-->
+                          <fieldset *ngIf="section.name === 'Setup'">
+                              <div class="field-group" formGroupName="conditional">
+                                <label class="required">Is this an application for a business or individual?</label>
+                                <div class="field-group__item_radio field-group__item--inset">
+                                  <input type="radio" name="applicationType" id="typeBusiness" formControlName="applicationType" value="business">
+                                  <label for="typeBusiness">Business</label>
+                                </div>
+                                <div class="field-group__item_radio field-group__item--inset">
+                                  <input type="radio" name="applicationType" id="typeIndividual" formControlName="applicationType" value="individual">
+                                  <label for="typeIndividual">Individual</label>
+                                </div>
+                              </div>
+                              <div class="field-group">
+                                <label class="required" for="saleAmount">What's the Total Estimated Sales Amount of this deal?</label>
+                                <div class="field-group__item_currency field-group__item--inset">
+                                  <input type="text" id="saleAmount" formControlName="saleAmount">
+                                </div>
+                              </div>
+                              <div class="field-group" formGroupName="conditional" *ngIf="setupForm.controls.conditional.controls.fein">
+                                <label class="required" for="fein">What's the Federal Employer ID Number (FEIN) of this customer?</label>
+                                <div class="field-group__item_text field-group__item--inset">
+                                  <input type="text" id="fein" formControlName="fein">
+                                </div>
+                              </div>
+                              <div class="field-group" formGroupName="conditional" *ngIf="setupForm.controls.conditional.controls.ssn">
+                                <label class="required" for="ssn">What's the Social Security Number (SSN) of this customer?</label>
+                                <div class="field-group__item_text field-group__item--inset">
+                                  <input type="text" id="ssn" formControlName="ssn">
+                                </div>
+                              </div>
+                            </fieldset>
+                        </div>
                       </div>
-                      <div class="accordion__header_status" *ngIf="section.active">
-                        <i class="material-icons">hourglass_empty</i>In Progress
-                      </div>
-                    </div>
-                    <div class="accordion__content accordion__content--creditapp" [@slide] *ngIf="section.open || section.active">
-                      <fieldset *ngIf="section.name === 'Setup'">
-                        <div class="field-group">
-                          <label class="required">Is this an application for a business or individual?</label>
-                          <div class="field-group__item_radio field-group__item--inset">
-                            <input type="radio" name="types" id="typeBusiness">
-                            <label for="typeBusiness">Business</label>
-                          </div>
-                          <div class="field-group__item_radio field-group__item--inset">
-                            <input type="radio" name="types" id="typeIndividual">
-                            <label for="typeIndividual">Individual</label>
-                          </div>
-                        </div>
-                        <div class="field-group">
-                          <label class="required" for="saleAmount">What's the Total Estimated Sales Amount of this deal?</label>
-                          <div class="field-group__item_currency field-group__item--inset">
-                              <input type="text" id="saleAmount">
-                          </div>
-                        </div>
-                        <div class="field-group">
-                          <label class="required" for="fein">What's the Federal Employer ID Number (FEIN) of this customer?</label>
-                          <div class="field-group__item_text field-group__item--inset">
-                            <input type="text" id="fein">
-                          </div>
-                        </div>
-                      </fieldset>
                     </div>
                   </div>
                 </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="application__footer">
+          <div class="grid">
+            <div class="grid__col-auto">
+              <div class="application__footer_errors">
+                <input type="checkbox" id="showErrors">
+                <label for="showErrors">Highlight errors</label>
+              </div>
+            </div>
+            <div class="grid__col-auto grid--align-end">
+              <div class="grid__cell">
+                <button class="btn" (click)="closeCreditApp()">Cancel</button>
+                <button class="btn">Save &amp; Close</button>
+                <button class="btn" type="submit">Submit Application</button>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="application__footer">
-        <div class="grid">
-          <div class="grid__col-auto">
-            <div class="application__footer_errors">
-              <input type="checkbox" id="showErrors">
-              <label for="showErrors">Highlight errors</label>
-            </div>
-          </div>
-          <div class="grid__col-auto grid--align-end">
-            <div class="grid__cell">
-              <button class="btn" (click)="closeCreditApp()">Cancel</button>
-              <button class="btn">Save &amp; Close</button>
-              <button class="btn">Submit Application</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

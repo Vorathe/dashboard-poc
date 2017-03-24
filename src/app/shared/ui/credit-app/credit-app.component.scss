@@ -16,7 +16,12 @@
   transform: translateY(0);
 }
 
-.application {
+.application,
+.application > form {
+  height: 100%;
+}
+
+.application > form {
   display: flex;
   flex-direction: column;
   height: 100%;
