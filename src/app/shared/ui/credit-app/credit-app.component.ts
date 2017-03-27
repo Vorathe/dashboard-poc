@@ -59,6 +59,8 @@ export class CreditAppComponent implements OnInit {
     }
   ];
   animationTime: number;
+  individualOpen = false;
+  businessOpen = false;
 
   public setupForm: FormGroup;
   public submitted = false;
@@ -134,12 +136,16 @@ export class CreditAppComponent implements OnInit {
 
         if (ssnFieldExists) {
           this.removeConditionalField('ssn');
+          this.individualOpen = false;
+          this.businessOpen = true;
         }
       } else if (x.conditional.applicationType === 'individual' && !ssnFieldExists) {
         this.addConditionalField('ssn');
 
         if (feinFieldExists) {
           this.removeConditionalField('fein');
+          this.businessOpen = false;
+          this.individualOpen = true;
         }
       }
     });
