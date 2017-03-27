@@ -78,7 +78,7 @@ export class LoginService {
     console.log('refresh_token -> ', localStorage.getItem('refresh_token'));
   }
 
-  /*checkToken() {
+  checkToken() {
     let rightNow = new Date().getTime();
     let expiresOn = parseInt(localStorage.getItem('expires_on'), 10);
 
@@ -104,7 +104,7 @@ export class LoginService {
         console.log('finished check token...');
       }
     });
-  }*/
+  }
 
   logout() {
     localStorage.removeItem('access_token');
