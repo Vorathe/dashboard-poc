@@ -1,7 +1,7 @@
 // TODO: ssn, fein, saleAmount -- re-eval type assignment once formatting is factored in
 export interface SetupForm {
   conditional: {
-    applicationType?: boolean;
+    applicationType: string;
     ssn?: string;
     fein?: string;
   }
