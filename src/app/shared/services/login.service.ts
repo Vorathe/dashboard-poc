@@ -25,7 +25,7 @@ export class LoginService {
   doLogin(username, password, grant, refreshToken) {
     let headers = new Headers();
     let loginParams = new URLSearchParams();
-    let domain = window['config'].domain;
+    let domain = this.config.domain;
 
     this.username = username || localStorage.getItem('username');
 
@@ -78,7 +78,7 @@ export class LoginService {
     console.log('refresh_token -> ', localStorage.getItem('refresh_token'));
   }
 
-  checkToken() {
+  /*checkToken() {
     let rightNow = new Date().getTime();
     let expiresOn = parseInt(localStorage.getItem('expires_on'), 10);
 
@@ -91,7 +91,6 @@ export class LoginService {
 
         console.log('sending refresh token -> ', refreshToken);
 
-        // return this.doLogin('', '', 'refresh_token', refreshToken).then(res => {
         return this.doLogin('', '', 'refresh_token', refreshToken).then(() => {
           console.log('token has been set in checkToken --- ', localStorage.getItem('access_token'));
         }).catch(err => {
@@ -105,7 +104,7 @@ export class LoginService {
         console.log('finished check token...');
       }
     });
-  }
+  }*/
 
   logout() {
     localStorage.removeItem('access_token');
