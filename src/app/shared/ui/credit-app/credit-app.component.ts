@@ -123,6 +123,7 @@ export class CreditAppComponent implements OnInit {
 
   closeCreditApp() {
     this.slideUpApp = false;
+    return false;
   }
 
   fadeCallback(e) {
