@@ -8,7 +8,7 @@
         <div class="application__group" #tpl>
           <div class="application__frame">
             <div class="application__frame_nav">
-              <cmp-side-nav [sections]="sections" (currentSection)="navigateToSection($event)"></cmp-side-nav>
+              <cmp-side-nav [sections]="sections" (currentSection)="navigateToSection($event)" [count]="counter"></cmp-side-nav>
             </div>
             <div class="application__frame_content">
               <div class="grid">
@@ -61,8 +61,149 @@
                               <input type="text" id="ssn" formControlName="ssn">
                             </div>
                           </div>
-                          <div *ngIf="businessOpen && (setupForm.controls.conditional.controls.fein.valid && setupForm.controls.saleAmount.valid)">biz</div>
-                          <div *ngIf="individualOpen && (setupForm.controls.conditional.controls.ssn.valid && setupForm.controls.saleAmount.valid)">individual</div>
+                          <!--TODO: Componentize below-->
+                          <div class="field-group" [@slide] *ngIf="businessOpen && (setupForm.controls.conditional.controls.fein.valid && setupForm.controls.saleAmount.valid)">
+                            <div class="field-group__item--inset">
+                              <div class="grid">
+                                <div class="grid__col-md-8 grid__col--bleed">
+                                  <div class="multiple-matches">
+                                    <h3>Mulitple Matches Found</h3>
+                                    <p>More than one record matches the FEIN or SSN provided. You can review the findings and choose which record is most accurate to use for Prefilling the application.</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <label class="required">Which information do you want to use for Prefill?</label>
+                            <div class="field-group__item_radio field-group__item_radio--combo field-group__item--inset" *ngFor="let match of matches">
+                              <div class="field-group__item_radio_content">
+                                <input type="radio" name="matches" formControlName="matches" [id]="match.id" [value]="match.id">
+                                <label [for]="match.id">{{match.name}}</label>
+                              </div>
+                              <div class="field-group__item_radio_content field-group__item_radio_content--match">
+                                <div class="grid">
+                                  <div class="grid__col-md-8 grid__col--bleed">
+                                    <div class="grid grid--border">
+                                      <div class="grid__col-md-6">
+                                        <ul class="list-grid">
+                                          <li>
+                                            <div class="list-grid__key">DOB</div>
+                                            <div class="list-grid__value">{{match.dob}}</div>
+                                          </li>
+                                          <li>
+                                            <div class="list-grid__key">FEIN</div>
+                                            <div class="list-grid__value">{{match.ssn}}</div>
+                                          </li>
+                                          <li>
+                                            <div class="list-grid__key">DL #</div>
+                                            <div class="list-grid__value">{{match.DL}}</div>
+                                          </li>
+                                          <li>
+                                            <div class="list-grid__key">Phone</div>
+                                            <div class="list-grid__value">{{match.phone}}</div>
+                                          </li>
+                                          <li>
+                                            <div class="list-grid__key">Email</div>
+                                            <div class="list-grid__value">{{match.email}}</div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                      <div class="grid__col-md-6">
+                                        <ul class="list-grid">
+                                          <li>
+                                            <div class="list-grid__key">Physical Address</div>
+                                            <div class="list_grid__values">
+                                              <div class="list-grid__value">{{match.physicalAddress.address}}</div>
+                                              <div class="list-grid__value">{{match.physicalAddress.city}}, {{match.physicalAddress.state}}</div>
+                                              <div class="list-grid__value">{{match.physicalAddress.zip}}</div>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <div class="list-grid__key">Mailing Address</div>
+                                            <div class="list-grid__values">
+                                              <div class="list-grid__value">{{match.mailingAddress.address}}</div>
+                                              <div class="list-grid__value">{{match.mailingAddress.city}}, {{match.mailingAddress.state}}</div>
+                                              <div class="list-grid__value">{{match.mailingAddress.zip}}</div>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="field-group" [@slide] *ngIf="individualOpen && (setupForm.controls.conditional.controls.ssn.valid && setupForm.controls.saleAmount.valid)">
+                            <div class="field-group__item--inset">
+                              <div class="grid">
+                                <div class="grid__col-md-8 grid__col--bleed">
+                                  <div class="multiple-matches">
+                                    <h3>Mulitple Matches Found</h3>
+                                    <p>More than one record matches the FEIN or SSN provided. You can review the findings and choose which record is most accurate to use for Prefilling the application.</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <label class="required">Which information do you want to use for Prefill?</label>
+                            <div class="field-group__item_radio field-group__item_radio--combo field-group__item--inset" *ngFor="let match of matches">
+                              <div class="field-group__item_radio_content">
+                                <input type="radio" name="matches" formControlName="matches" [id]="match.id" [value]="match.id">
+                                <label [for]="match.id">{{match.name}}</label>
+                              </div>
+                              <div class="field-group__item_radio_content field-group__item_radio_content--match">
+                                <div class="grid">
+                                  <div class="grid__col-md-8 grid__col--bleed">
+                                    <div class="grid grid--border">
+                                      <div class="grid__col-md-6">
+                                        <ul class="list-grid">
+                                          <li>
+                                            <div class="list-grid__key">DOB</div>
+                                            <div class="list-grid__value">{{match.dob}}</div>
+                                          </li>
+                                          <li>
+                                            <div class="list-grid__key">SSN</div>
+                                            <div class="list-grid__value">{{match.ssn}}</div>
+                                          </li>
+                                          <li>
+                                            <div class="list-grid__key">DL #</div>
+                                            <div class="list-grid__value">{{match.DL}}</div>
+                                          </li>
+                                          <li>
+                                            <div class="list-grid__key">Phone</div>
+                                            <div class="list-grid__value">{{match.phone}}</div>
+                                          </li>
+                                          <li>
+                                            <div class="list-grid__key">Email</div>
+                                            <div class="list-grid__value">{{match.email}}</div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                      <div class="grid__col-md-6">
+                                        <ul class="list-grid">
+                                          <li>
+                                            <div class="list-grid__key">Physical Address</div>
+                                            <div class="list_grid__values">
+                                              <div class="list-grid__value">{{match.physicalAddress.address}}</div>
+                                              <div class="list-grid__value">{{match.physicalAddress.city}}, {{match.physicalAddress.state}}</div>
+                                              <div class="list-grid__value">{{match.physicalAddress.zip}}</div>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <div class="list-grid__key">Mailing Address</div>
+                                            <div class="list-grid__values">
+                                              <div class="list-grid__value">{{match.mailingAddress.address}}</div>
+                                              <div class="list-grid__value">{{match.mailingAddress.city}}, {{match.mailingAddress.state}}</div>
+                                              <div class="list-grid__value">{{match.mailingAddress.zip}}</div>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </fieldset>
                       </div>
                     </div>
@@ -75,9 +216,8 @@
         <div class="application__footer">
           <div class="grid">
             <div class="grid__col-auto">
-              <div class="application__footer_errors">
-                <input type="checkbox" id="showErrors">
-                <label for="showErrors">Highlight errors</label>
+              <div class="application__footer_errors" [ngClass]="{'valid': setupForm.valid}">
+                The form is {{setupForm.valid ? 'valid' : 'invalid'}}
               </div>
             </div>
             <div class="grid__col-auto grid--align-end">

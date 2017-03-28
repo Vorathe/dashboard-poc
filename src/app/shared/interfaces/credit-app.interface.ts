@@ -6,4 +6,5 @@ export interface SetupForm {
     fein?: string;
   }
   saleAmount: string;
+  matches: string;
 }

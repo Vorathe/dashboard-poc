@@ -4,8 +4,11 @@
       *ngFor="let section of sections; let i = index"
       [ngClass]="{'side-nav__item--active': section.active, 'side-nav__item--disabled': !section.enabled}"
       (click)="outputSection(i, section.name)">
-    <i class="material-icons">{{section.active ? 'hourglass_empty' : ''}}{{!section.enabled ? 'lock_outline' : ''}}</i>
-    {{section.name}}
+    <div class="side-nav__item_content">
+      <i class="material-icons">{{section.active ? 'hourglass_empty' : ''}}{{!section.enabled ? 'lock_outline' : ''}}</i>
+      {{section.name}}
+    </div>
+    <div *ngIf="section.name === 'Setup'" class="side-nav__item_count">{{count}}</div>
   </li>
 </ul>
 <h3>Resources</h3>

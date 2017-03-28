@@ -61,4 +61,27 @@
 
 .accordion__content--creditapp .field-group {
   @include rem(margin-bottom, 30px);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.field-group__item_radio_content {
+  flex: 1 0 auto;
+
+  &--match {
+    @include rem((
+      margin: 20px 0
+    ));
+  }
+}
+
+.field-group__item_radio.field-group__item_radio--combo {
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.field-group__item_radio_content--match {
+  width: 100%;
 }

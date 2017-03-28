@@ -1,0 +1,29 @@
+.list-grid > li {
+  display: flex;
+
+  @include rem(margin-bottom, 10px);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.list-grid > li .list-grid__value {
+  flex: 1 1 auto;
+}
+
+.list-grid > li .list-grid__key {
+  flex: 0 1 auto;
+  align-self: stretch;
+
+  @include rem((
+    margin-right: 20px,
+    width: 100px
+  ));
+}
+
+.grid--border {
+  border: solid $_color-base-black;
+
+  @include rem(border-width, 1px);
+}

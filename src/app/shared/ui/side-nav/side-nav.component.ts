@@ -8,6 +8,7 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 export class SideNavComponent {
   @Output() currentSection = new EventEmitter();
   @Input() sections: Array<any>;
+  @Input() count = 2;
 
   constructor() { }
 

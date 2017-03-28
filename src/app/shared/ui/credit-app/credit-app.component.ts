@@ -60,7 +60,55 @@ export class CreditAppComponent implements OnInit {
   ];
   animationTime: number;
   individualOpen = false;
-  businessOpen = false;
+  businessOpen = true;
+  matches = [
+    {
+      id: 12345,
+      value: 'first',
+      name: 'Gabriella Padilla de Perez',
+      dob: '01/01/1961',
+      ssn: '### ## 6789',
+      DL: '668899221133',
+      phone: '555-555-555 (cell)',
+      email: 'g.perez@company.com',
+      physicalAddress: {
+        address: '1234 Maple Lane',
+        city: 'Omaha',
+        state: 'Nebraska',
+        zip: '10000-0000'
+      },
+      mailingAddress: {
+        address: 'P.O. Box 9999',
+        city: 'Omaha',
+        state: 'Nebraska',
+        zip: '10000-0001'
+      }
+    },
+    {
+      id: 54321,
+      value: 'second',
+      name: 'Gabriella Padilla Falto',
+      dob: '01/01/1961',
+      ssn: '### ## 6789',
+      DL: '668899221133',
+      phone: '333-333-333 (cell)',
+      email: 'g.padilla@company.com',
+      physicalAddress: {
+        address: '3423 Oak Lane',
+        city: 'Omaha',
+        state: 'Nebraska',
+        zip: '10000-0001'
+      },
+      mailingAddress: {
+        address: 'P.O. Box 8888',
+        city: 'Omaha',
+        state: 'Nebraska',
+        zip: '10000-0002'
+      }
+    }
+  ];
+  counter = 2;
+
 
   public setupForm: FormGroup;
   public submitted = false;
@@ -116,7 +164,8 @@ export class CreditAppComponent implements OnInit {
         applicationType: ['business'],
         fein: ['', Validators.required]
       }),
-      saleAmount: ['', Validators.required]
+      saleAmount: ['', Validators.required],
+      matches: ['', Validators.required]
     });
 
     this.subcribeToSetupFormChanges();
@@ -126,6 +175,7 @@ export class CreditAppComponent implements OnInit {
     const myFormValueChanges$ = this.setupForm.valueChanges;
 
     myFormValueChanges$.subscribe(x => {
+      console.log(x);
       let ssnFieldExists = (<FormGroup>(<FormGroup>this.setupForm).controls['conditional'])
         .contains('ssn');
       let feinFieldExists = (<FormGroup>(<FormGroup>this.setupForm).controls['conditional'])
@@ -137,17 +187,20 @@ export class CreditAppComponent implements OnInit {
         if (ssnFieldExists) {
           this.removeConditionalField('ssn');
           this.individualOpen = false;
-          this.businessOpen = true;
         }
+
+        this.businessOpen = true;
       } else if (x.conditional.applicationType === 'individual' && !ssnFieldExists) {
         this.addConditionalField('ssn');
 
         if (feinFieldExists) {
           this.removeConditionalField('fein');
           this.businessOpen = false;
-          this.individualOpen = true;
         }
+
+        this.individualOpen = true;
       }
+      this.checkFields(x);
     });
   }
 
@@ -157,8 +210,44 @@ export class CreditAppComponent implements OnInit {
   }
 
   removeConditionalField(field) {
+    (<FormGroup>this.setupForm).controls['matches'].setValue('', {emitEvent: false});
     (<FormGroup>(<FormGroup>this.setupForm).controls['conditional'])
       .removeControl(field);
+  }
+
+  checkFields(model: SetupForm) {
+    if ((<FormGroup>(<FormGroup>this.setupForm).controls['conditional']).contains('ssn')) {
+      this.setCounter('ssn', model);
+    } else if ((<FormGroup>(<FormGroup>this.setupForm).controls['conditional']).contains('fein')) {
+      this.setCounter('fein', model);
+    }
+  }
+
+  setCounter(type, model: SetupForm) {
+    if (model.conditional[type]) {
+      let shadowType = model.conditional[type].length || 0;
+      let sale = model.saleAmount.length || 0;
+      let match = model.matches.toString().length || 0;
+
+      if (shadowType === 0 && sale === 0) {
+        this.counter = 2;
+      }
+
+      if (sale > 0) {
+        this.counter = 1;
+      }
+
+      if (shadowType > 0 && sale > 0 || shadowType === 0 && sale > 0 || sale === 0 && shadowType > 0) {
+        this.counter = 1;
+      }
+
+      if (shadowType > 0 && sale > 0 && match > 0) {
+        this.counter = 0;
+      }
+
+    } else {
+      this.counter = 2;
+    }
   }
 
   save(model: SetupForm, isValid: boolean) {

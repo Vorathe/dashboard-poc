@@ -100,8 +100,24 @@
 
 .application__footer_errors {
   margin: auto 0;
+  color: palette(red, err);
+
+  &.valid {
+    color: green;
+  }
 }
 
 .accordion__content.accordion__content--creditapp {
   @include rem(padding, 30px);
+}
+
+.multiple-matches {
+  background-color: palette(gray);
+  border: solid $_color-base-black;
+
+  @include rem((
+    padding: 10px,
+    border-width: 1px,
+    margin-bottom: 30px
+  ));
 }

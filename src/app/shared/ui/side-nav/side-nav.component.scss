@@ -100,3 +100,28 @@ h3 {
 .side-nav__item.side-nav__item--active:hover {
   color: $_color-base-black;
 }
+
+.side-nav__item_content {
+  flex: 1 0 auto;
+}
+
+.side-nav__item_count {
+  flex: 0 1 auto;
+  border-radius: 50%;
+  background-color: $_color-base-white;
+  border: solid palette(grey, darker);
+  text-align: center;
+
+  @include rem((
+    font-size: 12px,
+    border-width: 1px,
+    height: 15px,
+    width: 15px,
+    line-height: 15px
+  ));
+}
+
+.side-nav__item_content,
+.side-nav__item_count {
+  align-self: center;
+}
