@@ -30,6 +30,10 @@ import {
   LoginService
 } from './shared/services';
 
+import {
+  LoginGuard
+} from './shared/helpers';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 
@@ -68,9 +72,10 @@ import { routing } from './app.routing';
   ],
   entryComponents: [ HeaderComponent ],
   providers: [
-    WindowRefService,
     CreditAppStateService,
+    LoginGuard,
     LoginService,
+    WindowRefService,
     { provide: APP_CONFIG, useValue: AppConfig }
   ],
   bootstrap: [AppComponent]

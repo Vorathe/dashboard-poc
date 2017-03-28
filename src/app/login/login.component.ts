@@ -14,7 +14,6 @@ export class LoginComponent {
   isError = false;
   errorMsg: string;
   username: string;
-  view = 'card';
 
   constructor(private loginService: LoginService, private router: Router ) {
     this.form = new FormGroup({
